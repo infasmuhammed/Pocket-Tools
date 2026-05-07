@@ -1,0 +1,76 @@
+<div class="tool-header">
+  <h2>Bulk Photo Renamer</h2>
+  <p>Rename many photos into a clean numbered set and download them as one ZIP file.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel image-panel-primary">
+    <div class="drop-zone">
+      <input type="file" id="br-upload" accept="image/*,.heic,.heif,image/heic,image/heif" multiple>
+      <div>
+        <strong>Select Photos</strong>
+        <span>Up to 100 images. Files are copied into a ZIP with new names; originals are not changed.</span>
+      </div>
+    </div>
+
+    <div class="image-summary">
+      <div>
+        <span class="summary-label">Selected</span>
+        <strong id="br-count">0</strong>
+      </div>
+      <div>
+        <span class="summary-label">Download</span>
+        <strong>ZIP</strong>
+      </div>
+      <div>
+        <span class="summary-label">Duplicates</span>
+        <strong id="br-dupes">0</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Base Name</label>
+        <input type="text" id="br-base" value="vacation" placeholder="vacation">
+        <span class="field-hint">Example output: vacation1.jpg, vacation2.jpg, vacation3.jpg.</span>
+      </div>
+      <div class="input-group">
+        <label>Start Number</label>
+        <input type="number" id="br-start" value="1" min="0" step="1">
+      </div>
+      <div class="input-group">
+        <label>Number Padding</label>
+        <input type="number" id="br-padding" value="0" min="0" max="6" step="1">
+        <span class="field-hint">Use 3 for 001, 002, 003.</span>
+      </div>
+      <div class="input-group">
+        <label>Output Format</label>
+        <select id="br-format">
+          <option value="original">Keep original file format</option>
+          <option value="image/jpeg">Convert to JPEG</option>
+          <option value="image/png">Convert to PNG</option>
+          <option value="image/webp">Convert to WebP</option>
+        </select>
+        <span class="field-hint">Conversion needs browser image support. HEIC works only where the browser can decode it.</span>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button id="br-download" class="btn">Download Renamed ZIP</button>
+      <button id="br-clear" class="btn btn-secondary">Clear</button>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div class="panel-title">
+      <h3>Preview</h3>
+      <span class="small muted" id="br-preview-note">No files selected</span>
+    </div>
+    <div id="br-empty" class="empty-state">Select photos to see the new names before downloading.</div>
+    <div id="br-list" class="image-list"></div>
+  </section>
+</div>
+
+<canvas id="br-canvas" class="hidden"></canvas>

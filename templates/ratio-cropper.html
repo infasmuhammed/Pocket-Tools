@@ -1,0 +1,75 @@
+<div class="tool-header">
+  <h2>Aspect Ratio Cropper</h2>
+  <p>Crop images into a clean square, landscape, portrait, or story ratio.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel image-panel-primary">
+    <div class="drop-zone">
+      <input type="file" id="rc-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
+      <div>
+        <strong>Select Image</strong>
+        <span>Choose one image, then drag the photo inside the crop frame before downloading.</span>
+      </div>
+    </div>
+    <div class="image-summary">
+      <div>
+        <span class="summary-label">Selected</span>
+        <strong id="rc-selected">None</strong>
+      </div>
+      <div>
+        <span class="summary-label">Ratio</span>
+        <strong id="rc-ratio-label">1:1</strong>
+      </div>
+      <div>
+        <span class="summary-label">Output</span>
+        <strong id="rc-output-size">-</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="rc-controls" class="image-panel">
+    <ul class="option-list option-list-compact">
+      <li>The preview is the crop. Drag to keep faces or important content inside the frame.</li>
+      <li>Use zoom for tighter crops. Export is JPEG with the selected aspect ratio.</li>
+    </ul>
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Aspect Ratio</label>
+        <select id="rc-ratio">
+          <option value="1">Square - 1:1</option>
+          <option value="0.8">Portrait - 4:5</option>
+          <option value="1.777">Landscape - 16:9</option>
+          <option value="1.333">Standard - 4:3</option>
+          <option value="0.5625">Story / Reel - 9:16</option>
+          <option value="custom">Custom</option>
+        </select>
+        <span class="field-hint">This chooses the final shape. The preview below shows exactly what downloads.</span>
+      </div>
+      <div class="input-group">
+        <label>Custom Width Ratio</label>
+        <input type="number" id="rc-custom-w" min="1" value="4">
+      </div>
+      <div class="input-group">
+        <label>Custom Height Ratio</label>
+        <input type="number" id="rc-custom-h" min="1" value="5">
+      </div>
+      <div class="input-group">
+        <label>Zoom: <span id="rc-zoom-val">100%</span></label>
+        <input type="range" id="rc-zoom" min="1" max="3" step="0.05" value="1">
+      </div>
+    </div>
+    <div class="action-row">
+      <button id="rc-download" class="btn" disabled>Download Cropped Image</button>
+      <button id="rc-reset" class="btn btn-secondary">Center Image</button>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div id="rc-empty" class="empty-state">Select an image to see the crop preview.</div>
+    <div class="crop-stage hidden" id="rc-stage">
+      <canvas id="rc-preview"></canvas>
+    </div>
+  </section>
+</div>
+<canvas id="rc-canvas" class="hidden"></canvas>

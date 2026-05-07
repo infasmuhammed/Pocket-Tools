@@ -1,0 +1,28 @@
+<div class="tool-header">
+  <h2>Extract Text from PDF</h2>
+  <p>Extract all text content from a PDF file.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="drop-zone">
+      <input type="file" id="ep-upload" accept="application/pdf">
+      <div>
+        <strong>Select PDF</strong>
+        <span>Extract selectable text page by page. Scanned images may not contain text.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="ep-controls" class="tool-panel">
+    <div class="button-row">
+      <button id="ep-generate" class="btn">Extract Text</button>
+      <button id="ep-copy" class="btn btn-secondary">Copy Text</button>
+    </div>
+    <div class="input-group">
+      <label>Extracted Text</label>
+      <textarea id="ep-output" readonly placeholder="Extracted text will appear here..."></textarea>
+      <span class="field-hint">Text extraction depends on the PDF containing selectable text, not only scanned images.</span>
+    </div>
+  </section>
+</div>

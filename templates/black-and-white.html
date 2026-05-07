@@ -1,0 +1,20 @@
+<div class="tool-header">
+  <h2>Image to Black & White</h2>
+  <p>Instantly remove color from any image.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel">
+    <div class="drop-zone">
+      <input type="file" id="bw-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
+      <div>
+        <strong>Select Image</strong>
+        <span>The preview converts to grayscale as soon as the image loads.</span>
+      </div>
+    </div>
+  </section>
+  <section id="bw-controls" class="image-panel">
+    <button id="bw-download" class="btn">Download B&W Image</button>
+  </section>
+</div>
+<canvas id="bw-canvas" class="hidden"></canvas>

@@ -1,0 +1,66 @@
+<div class="tool-header">
+  <h2>Social Media Resizer</h2>
+  <p>Prepare images for common social media canvas sizes.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel image-panel-primary">
+    <div class="drop-zone">
+      <input type="file" id="sr-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
+      <div>
+        <strong>Select Image</strong>
+        <span>Choose one image, then move it inside the social media frame before downloading.</span>
+      </div>
+    </div>
+
+    <div class="image-summary">
+      <div>
+        <span class="summary-label">Selected</span>
+        <strong id="sr-selected">None</strong>
+      </div>
+      <div>
+        <span class="summary-label">Output</span>
+        <strong id="sr-output-size">1080 x 1080</strong>
+      </div>
+      <div>
+        <span class="summary-label">Format</span>
+        <strong>JPG</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="sr-controls" class="image-panel">
+    <ul class="option-list option-list-compact">
+      <li>Drag the preview to keep faces or important objects inside the frame.</li>
+      <li>Use zoom when you need more control around the edges.</li>
+    </ul>
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Platform Preset</label>
+        <select id="sr-preset">
+          <option value="1080x1080">Instagram Square - 1080 x 1080</option>
+          <option value="1080x1350">Instagram Portrait - 1080 x 1350</option>
+          <option value="1200x630">Facebook / X Post - 1200 x 630</option>
+          <option value="1280x720">YouTube Thumbnail - 1280 x 720</option>
+        </select>
+        <span class="field-hint">The image fills this canvas. The preview below shows the final crop.</span>
+      </div>
+      <div class="input-group">
+        <label>Zoom: <span id="sr-zoom-val">100%</span></label>
+        <input type="range" id="sr-zoom" min="1" max="3" step="0.05" value="1">
+      </div>
+    </div>
+    <div class="action-row">
+      <button id="sr-download" class="btn" disabled>Download Resized Image</button>
+      <button id="sr-reset" class="btn btn-secondary">Center Image</button>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div id="sr-empty" class="empty-state">Select an image to see the crop preview.</div>
+    <div class="crop-stage hidden" id="sr-stage">
+      <canvas id="sr-preview"></canvas>
+    </div>
+  </section>
+</div>
+<canvas id="sr-canvas" class="hidden"></canvas>

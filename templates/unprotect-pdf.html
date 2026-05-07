@@ -1,0 +1,25 @@
+<div class="tool-header">
+  <h2>Remove PDF Password</h2>
+  <p>Unlock a PDF by providing its current password.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="drop-zone">
+      <input type="file" id="up-upload" accept="application/pdf">
+      <div>
+        <strong>Select Protected PDF</strong>
+        <span>Enter the known password to create an unlocked copy.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="up-controls" class="tool-panel">
+    <div class="input-group">
+      <label>Current Password</label>
+      <input type="password" id="up-pass" placeholder="Enter current password...">
+      <span class="field-hint">The unlocked output is rebuilt as a normal PDF. Complex PDFs may be flattened visually.</span>
+    </div>
+    <button id="up-generate" class="btn">Remove Password</button>
+  </section>
+</div>

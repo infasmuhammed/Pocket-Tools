@@ -1,0 +1,49 @@
+<div class="tool-header">
+  <h2>Photo to PDF</h2>
+  <p>Combine selected photos into one PDF document.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel image-panel-primary">
+    <div class="drop-zone">
+      <input type="file" id="pp-upload" accept="image/*,.heic,.heif,image/heic,image/heif" multiple>
+      <div>
+        <strong>Select Photos</strong>
+        <span>Choose up to 50 photos in the order you want them in the PDF.</span>
+      </div>
+    </div>
+    <div class="image-summary">
+      <div>
+        <span class="summary-label">Selected</span>
+        <strong id="pp-count">0</strong>
+      </div>
+      <div>
+        <span class="summary-label">Output</span>
+        <strong>PDF</strong>
+      </div>
+      <div>
+        <span class="summary-label">Page Size</span>
+        <strong>Image</strong>
+      </div>
+    </div>
+  </section>
+  <section id="pp-controls" class="image-panel">
+    <ul class="option-list option-list-compact">
+      <li>Each selected photo becomes one PDF page.</li>
+      <li>The output is one PDF file named images.pdf, not a ZIP.</li>
+      <li>HEIC/HEIF works only when the browser can decode the iPhone photo.</li>
+    </ul>
+    <div class="action-row">
+      <button id="pp-generate" class="btn" disabled>Generate PDF</button>
+      <button id="pp-clear" class="btn btn-secondary">Clear</button>
+    </div>
+  </section>
+  <section class="image-panel">
+    <div class="panel-title">
+      <h3>Selected Photos</h3>
+      <span id="pp-note" class="small muted">No photos selected</span>
+    </div>
+    <div id="pp-empty" class="empty-state">Select photos to see the PDF page order.</div>
+    <div id="pp-list" class="image-list"></div>
+  </section>
+</div>

@@ -1,0 +1,18 @@
+<div class="tool-header">
+  <h2>QR Code Generator</h2>
+  <p>Convert any link or text into a scannable QR Code.</p>
+</div>
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="input-group">
+      <label for="qr-input">Text or URL</label>
+      <textarea id="qr-input" class="textarea-short" placeholder="https://example.com"></textarea>
+      <span class="field-hint">Works for links, contact text, Wi-Fi strings, or any short message.</span>
+    </div>
+    <button id="btn-qr-generate" class="btn">Generate QR</button>
+  </section>
+  <section class="tool-panel hidden" id="qr-result-container">
+    <div id="qr-code" class="qr-frame"></div>
+    <button id="btn-qr-download" class="btn">Download PNG</button>
+  </section>
+</div>

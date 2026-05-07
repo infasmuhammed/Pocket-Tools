@@ -1,0 +1,31 @@
+<div class="tool-header">
+  <h2>Image Color Picker</h2>
+  <p>Pick HEX and RGB values from any point in an image.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel">
+    <div class="drop-zone">
+      <input type="file" id="cp-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
+      <div>
+        <strong>Select Image</strong>
+        <span>After upload, click the image preview to sample a color.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="cp-controls" class="image-panel">
+    <div class="color-result">
+      <div id="cp-swatch" class="color-swatch"></div>
+      <div>
+        <div id="cp-hex" class="color-hex">#000000</div>
+        <div id="cp-rgb" class="field-hint">rgb(0, 0, 0)</div>
+      </div>
+      <button id="cp-copy" class="btn btn-secondary">Copy HEX</button>
+    </div>
+    <div class="canvas-frame">
+      <canvas id="cp-canvas"></canvas>
+    </div>
+    <span class="field-hint">Click the preview to update the selected color.</span>
+  </section>
+  </div>

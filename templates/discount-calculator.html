@@ -1,0 +1,30 @@
+<div class="tool-header">
+  <h2>Discount Calculator</h2>
+  <p>Calculate your savings and the final price after a discount.</p>
+</div>
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="settings-grid">
+      <div class="input-group">
+        <label for="dc-price">Original Price</label>
+        <input type="number" id="dc-price" placeholder="e.g. 100.00" min="0">
+      </div>
+      <div class="input-group">
+        <label for="dc-discount">Discount Percentage</label>
+        <input type="number" id="dc-discount" placeholder="e.g. 20" min="0" max="100">
+      </div>
+    </div>
+  </section>
+  <section class="tool-panel">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>You Save</span>
+        <strong id="dc-savings">0.00</strong>
+      </div>
+      <div class="metric">
+        <span>Final Price</span>
+        <strong id="dc-final">0.00</strong>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+<div class="tool-header">
+  <h2>Random Decision Maker</h2>
+  <p>Can't decide? Enter your options and let fate decide.</p>
+</div>
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="input-group">
+      <label for="rd-input">Choices</label>
+      <textarea id="rd-input" class="textarea-medium" placeholder="Pizza&#10;Burgers&#10;Sushi&#10;Salad"></textarea>
+      <span class="field-hint">Add one choice per line.</span>
+    </div>
+    <button id="btn-rd-spin" class="btn">Make Decision</button>
+  </section>
+  <section class="tool-panel hidden" id="rd-result-container">
+    <div class="metric">
+      <span>The verdict is</span>
+      <strong id="rd-winner">Waiting...</strong>
+    </div>
+  </section>
+</div>

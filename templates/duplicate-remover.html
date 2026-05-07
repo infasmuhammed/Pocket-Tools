@@ -1,0 +1,25 @@
+<div class="tool-header">
+  <h2>Duplicate Line Remover</h2>
+  <p>Instantly clean up your lists by removing duplicate entries.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="input-group">
+      <label for="dl-input">List Items</label>
+      <textarea id="dl-input" placeholder="Type or paste your list here..."></textarea>
+      <span class="field-hint">Exact duplicate lines are removed while keeping the first occurrence.</span>
+    </div>
+    <button class="btn btn-secondary" id="btn-remove-dup">Remove Duplicates</button>
+  </section>
+  <section class="tool-panel">
+    <div class="input-group">
+      <label for="dl-output">Unique Result</label>
+      <textarea id="dl-output" readonly placeholder="Unique items will appear here..."></textarea>
+    </div>
+    <div class="button-row">
+      <span id="dl-stats" class="field-hint"></span>
+      <button id="dl-copy" class="btn">Copy</button>
+    </div>
+  </section>
+</div>

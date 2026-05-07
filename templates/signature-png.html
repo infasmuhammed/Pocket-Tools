@@ -1,0 +1,29 @@
+<div class="tool-header">
+  <h2>Signature to PNG</h2>
+  <p>Draw a clean signature and download it as a transparent PNG.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Pen Size</label>
+        <input type="range" id="sig-size" min="1" max="10" value="3">
+      </div>
+      <div class="input-group">
+        <label>Pen Color</label>
+        <input type="color" id="sig-color" value="#000000" class="color-input">
+      </div>
+    </div>
+  </section>
+  <section class="tool-panel">
+    <div class="signature-pad">
+      <canvas id="sig-canvas"></canvas>
+    </div>
+    <div class="button-row">
+      <button id="sig-clear" class="btn btn-secondary">Clear</button>
+      <button id="sig-download" class="btn">Download PNG</button>
+    </div>
+    <span class="field-hint">The downloaded PNG has a transparent background.</span>
+  </section>
+</div>

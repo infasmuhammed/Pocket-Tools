@@ -1,0 +1,81 @@
+<div class="tool-header">
+  <h2>Image Compressor + Converter</h2>
+  <p>Batch prepare images with previews, compression, resizing, and format conversion.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel image-panel-primary">
+    <div class="drop-zone">
+      <input type="file" id="ic-upload" accept="image/*,.heic,.heif,image/heic,image/heif" multiple>
+      <div>
+        <strong>Select Images</strong>
+        <span>JPG, PNG, WebP, GIF, BMP, HEIC, or HEIF. Up to 100 files, 10 MB each.</span>
+      </div>
+    </div>
+
+    <div class="image-summary">
+      <div>
+        <span class="summary-label">Files</span>
+        <strong id="ic-file-count">0</strong>
+      </div>
+      <div>
+        <span class="summary-label">Original</span>
+        <strong id="ic-original-size">0 KB</strong>
+      </div>
+      <div>
+        <span class="summary-label">Estimated</span>
+        <strong id="ic-output-size">0 KB</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <ul class="option-list option-list-compact">
+      <li>Target size is optional. Example: 200 KB tries to make each image close to 200 KB.</li>
+      <li>HEIC/HEIF works when the browser can decode iPhone photos. Safari usually has the best native support.</li>
+      <li>Download All creates one ZIP file containing every processed image.</li>
+    </ul>
+
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Output Format</label>
+        <select id="ic-format">
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
+          <option value="image/png">PNG</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Resize Limit</label>
+        <input type="number" id="ic-max-width" min="0" step="100" placeholder="Original">
+        <span class="field-hint">Maximum width in pixels. Leave empty to keep the original width.</span>
+      </div>
+      <div class="input-group">
+        <label>Target Size</label>
+        <input type="number" id="ic-target-kb" min="0" step="10" placeholder="Optional KB">
+        <span class="field-hint">Example: enter 200 to aim for an output near 200 KB.</span>
+      </div>
+      <div class="input-group">
+        <label>Quality: <span id="ic-quality-val">80%</span></label>
+        <input type="range" id="ic-quality" min="0.1" max="1" step="0.05" value="0.8">
+        <span class="field-hint">Used when target size is empty, or when the target cannot be matched exactly.</span>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button id="ic-process" class="btn">Process Images</button>
+      <button id="ic-clear" class="btn btn-secondary">Clear</button>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div class="panel-title">
+      <h3>Queue</h3>
+      <button id="ic-download-all" class="btn btn-secondary" disabled>Download ZIP</button>
+    </div>
+    <div id="ic-empty" class="empty-state">No images selected yet.</div>
+    <div id="ic-list" class="image-list"></div>
+  </section>
+</div>
+
+<canvas id="ic-canvas" class="hidden"></canvas>

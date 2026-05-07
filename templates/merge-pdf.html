@@ -1,0 +1,35 @@
+<div class="tool-header">
+  <h2>Merge PDFs</h2>
+  <p>Combine multiple PDF files into one.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="drop-zone">
+      <input type="file" id="mp-upload" accept="application/pdf" multiple>
+      <div>
+        <strong>Select PDFs</strong>
+        <span>Choose files in the order they should appear in the final document.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="mp-controls" class="tool-panel">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Selected PDFs</span>
+        <strong id="mp-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Output</span>
+        <strong>Single PDF</strong>
+      </div>
+      <div class="metric">
+        <span>Order</span>
+        <strong>Selection</strong>
+      </div>
+    </div>
+    <button id="mp-generate" class="btn">Merge PDFs</button>
+    <span class="field-hint">Tip: select files together in the exact order you want them merged.</span>
+  </section>
+</div>

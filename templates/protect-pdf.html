@@ -1,0 +1,36 @@
+<div class="tool-header">
+  <h2>Protect PDF</h2>
+  <p>This offline build cannot safely encrypt PDFs yet. It will not create a fake protected file.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="drop-zone">
+      <input type="file" id="ppr-upload" accept="application/pdf">
+      <div>
+        <strong>Select PDF</strong>
+        <span>Encryption requires a PDF engine with password-writing support.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="ppr-controls" class="tool-panel">
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="ppr-pass" placeholder="Enter password...">
+        <span class="field-hint">Use a strong password. This offline engine can validate the setup but cannot encrypt yet.</span>
+        <button type="button" id="ppr-suggest" class="btn btn-secondary">Generate Suggested Password</button>
+      </div>
+      <div class="input-group">
+        <label>Suggested Setup</label>
+        <ul class="option-list">
+          <li>Minimum 12 characters</li>
+          <li>Use letters, numbers, and symbols</li>
+          <li>Keep a copy of the password separately</li>
+        </ul>
+      </div>
+    </div>
+    <button id="ppr-generate" class="btn">Check Protection Support</button>
+  </section>
+</div>

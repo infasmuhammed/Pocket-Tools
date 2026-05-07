@@ -1,0 +1,41 @@
+<div class="tool-header">
+  <h2>Text Watermark</h2>
+  <p>Add custom text watermarks to your images locally.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel">
+    <div class="drop-zone">
+      <input type="file" id="wm-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
+      <div>
+        <strong>Select Image</strong>
+        <span>Watermark settings are ready before upload.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="wm-controls" class="image-panel">
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Watermark Text</label>
+        <input type="text" id="wm-text" value="© MyBrand">
+      </div>
+      <div class="input-group">
+      <label>Position</label>
+      <select id="wm-pos">
+        <option value="bottom-right">Bottom Right</option>
+        <option value="bottom-left">Bottom Left</option>
+        <option value="top-right">Top Right</option>
+        <option value="top-left">Top Left</option>
+        <option value="center">Center</option>
+      </select>
+    </div>
+      <div class="input-group">
+      <label>Color</label>
+      <input type="color" id="wm-color" value="#ffffff" class="color-input">
+      </div>
+    </div>
+    <button id="wm-download" class="btn">Download Watermarked Image</button>
+  </section>
+</div>
+<canvas id="wm-canvas" class="hidden"></canvas>

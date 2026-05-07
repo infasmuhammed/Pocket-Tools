@@ -1,0 +1,66 @@
+<div class="tool-header">
+  <h2>Image Format Converter</h2>
+  <p>Convert one or many images between PNG, JPEG, and WebP.</p>
+</div>
+
+<div class="image-workbench">
+  <section class="image-panel image-panel-primary">
+    <div class="drop-zone">
+      <input type="file" id="fc-upload" accept="image/*,.heic,.heif,image/heic,image/heif" multiple>
+      <div>
+        <strong>Select Images</strong>
+        <span>Choose up to 100 images. HEIC/HEIF depends on browser decoding support.</span>
+      </div>
+    </div>
+
+    <div class="image-summary">
+      <div>
+        <span class="summary-label">Files</span>
+        <strong id="fc-file-count">0</strong>
+      </div>
+      <div>
+        <span class="summary-label">Original</span>
+        <strong id="fc-original-size">0 KB</strong>
+      </div>
+      <div>
+        <span class="summary-label">Converted</span>
+        <strong id="fc-output-size">0 KB</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <ul class="option-list option-list-compact">
+      <li>Convert selected images to PNG, JPEG, or WebP.</li>
+      <li>Download All creates one ZIP so the browser does not ask for every file separately.</li>
+    </ul>
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Target Format</label>
+        <select id="fc-format">
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Quality: <span id="fc-quality-val">90%</span></label>
+        <input type="range" id="fc-quality" min="0.1" max="1" step="0.05" value="0.9">
+      </div>
+    </div>
+    <div class="action-row">
+      <button id="fc-convert" class="btn">Convert Images</button>
+      <button id="fc-clear" class="btn btn-secondary">Clear</button>
+    </div>
+  </section>
+
+  <section class="image-panel">
+    <div class="panel-title">
+      <h3>Queue</h3>
+      <button id="fc-download-all" class="btn btn-secondary" disabled>Download ZIP</button>
+    </div>
+    <div id="fc-empty" class="empty-state">No images selected yet.</div>
+    <div id="fc-list" class="image-list"></div>
+  </section>
+</div>
+<canvas id="fc-canvas" class="hidden"></canvas>

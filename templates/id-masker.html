@@ -1,0 +1,43 @@
+<div class="tool-header">
+  <h2>Aadhaar / PAN Masking Tool</h2>
+  <p>Mask sensitive ID details locally before sharing documents.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="drop-zone">
+      <input type="file" id="im-upload" accept="image/*,.heic,.heif,image/heic,image/heif,application/pdf">
+      <div>
+        <strong>Select Image or PDF</strong>
+        <span>Load an ID image or the first page of a PDF, then drag boxes over private details.</span>
+      </div>
+    </div>
+  </section>
+  <section class="tool-panel">
+    <div class="settings-grid">
+      <div class="input-group">
+        <label>Mask Style</label>
+        <select id="im-style">
+          <option value="black">Black Box</option>
+          <option value="blur">Blur Block</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>PDF Page</label>
+        <input type="number" id="im-page" min="1" value="1">
+        <span class="field-hint">Used only when the selected file is a PDF.</span>
+      </div>
+    </div>
+    <div class="button-row">
+      <button id="im-undo" class="btn btn-secondary">Undo Last Mask</button>
+      <button id="im-clear" class="btn btn-secondary">Clear Masks</button>
+      <button id="im-download" class="btn">Download Masked PNG</button>
+    </div>
+    <span class="field-hint">Drag on the preview to place masks. Everything runs locally in your browser.</span>
+  </section>
+  <section class="tool-panel">
+    <div class="mask-stage">
+      <canvas id="im-canvas"></canvas>
+    </div>
+  </section>
+</div>
