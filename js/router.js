@@ -1,6 +1,18 @@
 import { UI } from './core/ui.js';
 import { getTool, isValidToolId } from './registry.js';
 
+function setAppTitle(element, title) {
+  element.replaceChildren();
+  const logo = document.createElement('img');
+  logo.className = 'app-logo';
+  logo.src = 'assets/icon-192.png';
+  logo.alt = '';
+  logo.setAttribute('aria-hidden', 'true');
+  const text = document.createElement('span');
+  text.textContent = title;
+  element.append(logo, text);
+}
+
 class Router {
   constructor() {
     this.currentToolId = null;
@@ -23,7 +35,7 @@ class Router {
       viewTool.classList.add('hidden');
       viewHome.classList.remove('hidden');
       btnBack.classList.add('hidden');
-      appTitle.textContent = 'Pocket Tools';
+      setAppTitle(appTitle, 'Pocket Tools');
       this.currentToolId = null;
       window.scrollTo(0, 0);
       return;
@@ -47,7 +59,7 @@ class Router {
       btnBack.onclick = () => { window.location.hash = '#/'; };
 
       const tool = getTool(toolId);
-      appTitle.textContent = tool.name;
+      setAppTitle(appTitle, tool.name);
       toolContainer.replaceChildren();
       const skeleton = document.createElement('div');
       skeleton.className = 'skeleton';

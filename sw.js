@@ -1,7 +1,7 @@
 // Pocket Tools — service worker.
 // Strategy: full app precache for offline-first install, plus runtime refreshes.
 
-const VERSION = 'pocket-tools-v10';
+const VERSION = 'pocket-tools-v13';
 const PRECACHE = `${VERSION}-precache`;
 const RUNTIME  = `${VERSION}-runtime`;
 
@@ -25,7 +25,11 @@ const PRECACHE_URLS = [
   './lib/pdf.worker.min.js',
 
   // Assets
-  './assets/icon.svg',
+  './assets/icon.png',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/icon-maskable-512.png',
+  './assets/apple-touch-icon.png',
 
   // Tool templates
   './templates/image-compressor.html',
