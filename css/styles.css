@@ -89,7 +89,8 @@ a:focus-visible {
   z-index: 10;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  display: flex;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
@@ -100,13 +101,14 @@ a:focus-visible {
   font-size: 17px;
   font-weight: 600;
   letter-spacing: 0;
-  flex: 1;
   text-align: center;
   min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  grid-column: 2;
+  justify-self: stretch;
 }
 .app-header h1 span {
   overflow: hidden;
@@ -120,7 +122,10 @@ a:focus-visible {
   object-fit: cover;
   flex: 0 0 auto;
 }
-.header-spacer { width: 40px; }
+.header-spacer {
+  width: 40px;
+  grid-column: 3;
+}
 
 .btn-icon {
   width: 40px;
@@ -131,6 +136,14 @@ a:focus-visible {
   justify-content: center;
   color: var(--fg);
   transition: background .15s;
+}
+.app-header .btn-icon {
+  grid-column: 1;
+}
+.app-header .btn-icon.hidden {
+  display: inline-flex !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 .btn-icon:hover { background: var(--card-hover); }
 

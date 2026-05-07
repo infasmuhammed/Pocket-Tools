@@ -1,7 +1,7 @@
 // Pocket Tools — service worker.
 // Strategy: full app precache for offline-first install, plus runtime refreshes.
 
-const VERSION = 'pocket-tools-v13';
+const VERSION = 'pocket-tools-v14';
 const PRECACHE = `${VERSION}-precache`;
 const RUNTIME  = `${VERSION}-runtime`;
 
