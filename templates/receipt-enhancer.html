@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Receipt Enhancer</h2>
-  <p>Convert a receipt photo to high-contrast black & white — easier to read and to file.</p>
+  <p>Preview high-contrast receipt cleanup before downloading the enhanced image.</p>
 </div>
 <div class="image-workbench">
   <section class="image-panel">
@@ -8,23 +8,32 @@
       <input type="file" id="re-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
       <div>
         <strong>Select Receipt Photo</strong>
-        <span>Enhancement settings are ready before upload.</span>
+        <span>Use contrast and threshold to make printed text easier to read.</span>
       </div>
     </div>
+    <div id="re-file-status" class="selected-file">No receipt selected yet.</div>
   </section>
   <section id="re-controls" class="image-panel">
-    <div class="settings-grid">
-      <div class="input-group">
-        <label>Contrast: <span id="re-contrast-val">1.6×</span></label>
-        <input type="range" id="re-contrast" min="1" max="3" step="0.1" value="1.6">
+    <div class="preview-grid">
+      <div class="preview-stage">
+        <div id="re-empty" class="preview-empty">Preview will appear after selecting a receipt.</div>
+        <canvas id="re-canvas" class="hidden"></canvas>
       </div>
-      <div class="input-group">
-        <label>Threshold: <span id="re-threshold-val">128</span></label>
-        <input type="range" id="re-threshold" min="60" max="200" step="1" value="128">
-        <span class="field-hint">Lower values keep more dark detail; higher values create cleaner black/white output.</span>
+      <div>
+        <div class="settings-grid">
+          <div class="input-group">
+            <label>Contrast: <span id="re-contrast-val">1.6x</span></label>
+            <input type="range" id="re-contrast" min="1" max="3" step="0.1" value="1.6">
+          </div>
+          <div class="input-group">
+            <label>Threshold: <span id="re-threshold-val">128</span></label>
+            <input type="range" id="re-threshold" min="60" max="200" step="1" value="128">
+            <span class="field-hint">Lower values keep more dark detail; higher values create cleaner black/white output.</span>
+          </div>
+        </div>
+        <button id="re-download" class="btn">Download Enhanced</button>
       </div>
     </div>
-    <button id="re-download" class="btn">Download Enhanced</button>
   </section>
 </div>
-<canvas id="re-canvas" class="hidden"></canvas>
+

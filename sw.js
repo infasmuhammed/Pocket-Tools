@@ -1,7 +1,7 @@
 // Pocket Tools — service worker.
 // Strategy: full app precache for offline-first install, plus runtime refreshes.
 
-const VERSION = 'pocket-tools-v14';
+const VERSION = 'pocket-tools-v26';
 const PRECACHE = `${VERSION}-precache`;
 const RUNTIME  = `${VERSION}-runtime`;
 
@@ -23,6 +23,8 @@ const PRECACHE_URLS = [
   './lib/pdf-lib.min.js',
   './lib/pdf.min.js',
   './lib/pdf.worker.min.js',
+  './lib/qpdf.js',
+  './lib/qpdf.wasm',
 
   // Assets
   './assets/icon.png',
@@ -115,10 +117,17 @@ const PRECACHE_URLS = [
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(PRECACHE);
-    await Promise.all(PRECACHE_URLS.map(async (url) => {
-      const res = await fetch(url, { cache: 'reload' });
-      if (!res.ok) throw new Error(`[sw] precache failed: ${url} (${res.status})`);
-      await cache.put(url, res);
+    await Promise.allSettled(PRECACHE_URLS.map(async (url) => {
+      try {
+        const res = await fetch(url, { cache: 'reload' });
+        if (!res.ok) {
+          console.warn(`[sw] precache skipped: ${url} (${res.status})`);
+          return;
+        }
+        await cache.put(url, res);
+      } catch (err) {
+        console.warn(`[sw] precache error: ${url}`, err);
+      }
     }));
     await self.skipWaiting();
   })());

@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Whitespace Remover</h2>
-  <p>Remove extra spaces, tabs, and empty lines from your text.</p>
+  <p>Remove extra spaces, tabs, and blank lines with clear before/after counts.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -15,6 +15,29 @@
       <button class="btn btn-secondary" id="btn-empty-lines">Remove Empty Lines</button>
     </div>
   </section>
+
+  <section class="tool-panel">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Original Characters</span>
+        <strong id="ws-original-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Result Characters</span>
+        <strong id="ws-result-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Characters Reduced</span>
+        <strong id="ws-reduced-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Whitespace Reduced</span>
+        <strong id="ws-space-count">0</strong>
+      </div>
+    </div>
+    <div id="ws-summary" class="inline-status">Choose a cleanup action to see exactly what changed.</div>
+  </section>
+
   <section class="tool-panel">
     <div class="input-group">
       <label for="ws-output">Result</label>
@@ -23,3 +46,4 @@
     <button id="ws-copy" class="btn">Copy Result</button>
   </section>
 </div>
+

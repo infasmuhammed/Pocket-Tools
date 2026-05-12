@@ -61,9 +61,7 @@ export default {
     };
 
     btnCopy.onclick = () => {
-      navigator.clipboard.writeText(hexEl.textContent)
-        .then(() => UI.showToast('Copied!', 'success'))
-        .catch(() => UI.showError('Failed to copy'));
+      UI.copyText(hexEl.textContent, 'Color copied.');
     };
   }
 };

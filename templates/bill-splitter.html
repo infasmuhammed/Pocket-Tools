@@ -1,38 +1,71 @@
 <div class="tool-header">
   <h2>Bill Splitter</h2>
-  <p>Easily split restaurant bills with tip included.</p>
+  <p>Split a bill equally, by shares, by percentage, or by exact amount. GST and CGST are shared equally.</p>
 </div>
 <div class="tool-dashboard">
   <section class="tool-panel">
     <div class="settings-grid">
       <div class="input-group">
-        <label for="bs-amount">Bill Amount</label>
-        <input type="number" id="bs-amount" placeholder="e.g. 150.00" min="0" step="0.01">
+        <label for="bs-amount">Bill Amount Before Tax</label>
+        <input type="number" id="bs-amount" placeholder="Example: 200" min="0" step="0.01" value="200">
       </div>
       <div class="input-group">
-        <label for="bs-tip">Tip Percentage</label>
-        <input type="number" id="bs-tip" placeholder="e.g. 15" min="0" value="15">
+        <label for="bs-gst">GST Amount</label>
+        <input type="number" id="bs-gst" placeholder="0" min="0" step="0.01" value="0">
       </div>
       <div class="input-group">
-        <label for="bs-people">People</label>
-        <input type="number" id="bs-people" placeholder="e.g. 3" min="1" value="1">
+        <label for="bs-cgst">CGST Amount</label>
+        <input type="number" id="bs-cgst" placeholder="0" min="0" step="0.01" value="0">
+      </div>
+      <div class="input-group">
+        <label for="bs-note">What is this for?</label>
+        <input type="text" id="bs-note" placeholder="Dinner, tea, snacks...">
       </div>
     </div>
   </section>
+
   <section class="tool-panel">
+    <div class="amount-hero">
+      <span>Total Amount To Split</span>
+      <strong id="bs-total">₹200.00</strong>
+    </div>
+    <div class="segmented-control split-mode-tabs" aria-label="Split mode">
+      <button type="button" class="active" data-mode="equal">Equal</button>
+      <button type="button" data-mode="shares">Shares</button>
+      <button type="button" data-mode="percent">Percent</button>
+      <button type="button" data-mode="manual">Amount</button>
+    </div>
+    <div id="bs-mode-help" class="inline-status">Equal mode divides the bill amount equally, then adds each person's equal tax share.</div>
+  </section>
+
+  <section class="tool-panel">
+    <div class="panel-title">
+      <h3>People</h3>
+      <button id="bs-add-person" class="btn btn-secondary">Add Person</button>
+    </div>
+    <div id="bs-people-list" class="split-people-list"></div>
+  </section>
+
+  <section class="tool-panel">
+    <div class="panel-title">
+      <h3>Split Result</h3>
+      <button id="bs-copy" class="btn btn-secondary">Copy Text</button>
+    </div>
     <div class="metric-grid">
       <div class="metric">
-        <span>Total Tip</span>
-        <strong id="bs-total-tip">0.00</strong>
+        <span>People Included</span>
+        <strong id="bs-included">0</strong>
       </div>
       <div class="metric">
-        <span>Total With Tip</span>
-        <strong id="bs-total-amount">0.00</strong>
+        <span>Tax Per Person</span>
+        <strong id="bs-tax-person">₹0.00</strong>
       </div>
       <div class="metric">
-        <span>Per Person</span>
-        <strong id="bs-per-person">0.00</strong>
+        <span>Balance Check</span>
+        <strong id="bs-balance">₹0.00</strong>
       </div>
     </div>
+    <div id="bs-status" class="inline-status">Add names and choose a split mode.</div>
+    <div id="bs-result-list" class="split-result-list"></div>
   </section>
 </div>

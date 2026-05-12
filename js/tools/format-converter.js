@@ -5,6 +5,7 @@ const OUTPUT_EXT = {
   'image/jpeg': 'jpg',
   'image/png': 'png',
   'image/webp': 'webp',
+  'image/avif': 'avif',
 };
 const MAX_FILES = 100;
 
@@ -28,6 +29,31 @@ export default {
   init() {
     const upload = document.getElementById('fc-upload');
     const formatEl = document.getElementById('fc-format');
+
+    const checkFormatSupport = async (mime) => {
+      try {
+        const c = document.createElement('canvas');
+        c.width = c.height = 2;
+        const blob = await new Promise(res => c.toBlob(res, mime));
+        return !!blob && blob.type === mime;
+      } catch {
+        return false;
+      }
+    };
+
+    (async () => {
+      for (const mime of ['image/webp', 'image/avif']) {
+        const supported = await checkFormatSupport(mime);
+        if (!supported) {
+          const opt = formatEl.querySelector(`option[value="${mime}"]`);
+          if (opt) {
+            opt.disabled = true;
+            opt.textContent += ' (unsupported)';
+          }
+        }
+      }
+    })();
+
     const qualityEl = document.getElementById('fc-quality');
     const qualityVal = document.getElementById('fc-quality-val');
     const btnConvert = document.getElementById('fc-convert');
@@ -130,8 +156,15 @@ export default {
 
       const blob = await new Promise((resolve, reject) => {
         canvas.toBlob((result) => {
-          if (result) resolve(result);
-          else reject(new Error('Could not convert image.'));
+          if (!result) {
+            reject(new Error('Could not convert image.'));
+            return;
+          }
+          if (mime !== 'image/png' && result.type && result.type !== mime) {
+            reject(new Error((OUTPUT_EXT[mime] || 'Selected format').toUpperCase() + ' export is not supported by this browser.'));
+            return;
+          }
+          resolve(result);
         }, mime, Number(qualityEl.value));
       });
 

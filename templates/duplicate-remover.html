@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Duplicate Line Remover</h2>
-  <p>Instantly clean up your lists by removing duplicate entries.</p>
+  <p>Clean lists while keeping the first occurrence and showing what was removed.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -13,13 +13,28 @@
     <button class="btn btn-secondary" id="btn-remove-dup">Remove Duplicates</button>
   </section>
   <section class="tool-panel">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Original Lines</span>
+        <strong id="dl-original-lines">0</strong>
+      </div>
+      <div class="metric">
+        <span>Unique Lines</span>
+        <strong id="dl-unique-lines">0</strong>
+      </div>
+      <div class="metric">
+        <span>Removed</span>
+        <strong id="dl-removed-lines">0</strong>
+      </div>
+    </div>
+    <div id="dl-removed-list" class="inline-status">Removed duplicate lines will appear here.</div>
+  </section>
+  <section class="tool-panel">
     <div class="input-group">
       <label for="dl-output">Unique Result</label>
       <textarea id="dl-output" readonly placeholder="Unique items will appear here..."></textarea>
     </div>
-    <div class="button-row">
-      <span id="dl-stats" class="field-hint"></span>
-      <button id="dl-copy" class="btn">Copy</button>
-    </div>
+    <button id="dl-copy" class="btn">Copy</button>
   </section>
 </div>
+

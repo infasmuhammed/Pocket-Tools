@@ -33,9 +33,7 @@ const WordCounter = {
         UI.showError('No text to copy');
         return;
       }
-      navigator.clipboard.writeText(this.inputEl.value)
-        .then(() => UI.showToast('Copied to clipboard!', 'success'))
-        .catch(() => UI.showError('Failed to copy'));
+      UI.copyText(this.inputEl.value);
     });
   },
 

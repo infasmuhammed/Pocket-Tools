@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Image to Black & White</h2>
-  <p>Instantly remove color from any image.</p>
+  <p>Preview the grayscale conversion and control how strongly color is removed.</p>
 </div>
 
 <div class="image-workbench">
@@ -9,12 +9,27 @@
       <input type="file" id="bw-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
       <div>
         <strong>Select Image</strong>
-        <span>The preview converts to grayscale as soon as the image loads.</span>
+        <span>The preview updates immediately after upload.</span>
+      </div>
+    </div>
+    <div id="bw-file-status" class="selected-file">No image selected yet.</div>
+  </section>
+
+  <section id="bw-controls" class="image-panel">
+    <div class="preview-grid">
+      <div class="preview-stage">
+        <div id="bw-empty" class="preview-empty">Preview will appear after selecting an image.</div>
+        <canvas id="bw-canvas" class="hidden"></canvas>
+      </div>
+      <div>
+        <div class="input-group">
+          <label>Black & White Intensity: <span id="bw-intensity-val">100%</span></label>
+          <input type="range" id="bw-intensity" min="0" max="100" step="5" value="100">
+          <span class="field-hint">100% is pure grayscale. Lower values keep some original color.</span>
+        </div>
+        <button id="bw-download" class="btn">Download B&W Image</button>
       </div>
     </div>
   </section>
-  <section id="bw-controls" class="image-panel">
-    <button id="bw-download" class="btn">Download B&W Image</button>
-  </section>
 </div>
-<canvas id="bw-canvas" class="hidden"></canvas>
+

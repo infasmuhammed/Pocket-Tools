@@ -5,6 +5,7 @@ const OUTPUT_EXT = {
   'image/jpeg': 'jpg',
   'image/png': 'png',
   'image/webp': 'webp',
+  'image/avif': 'avif',
 };
 const MAX_FILES = 100;
 
@@ -122,14 +123,21 @@ export default {
 
     const canvasToBlob = (mime, quality) => new Promise((resolve, reject) => {
       canvas.toBlob((result) => {
-        if (result) resolve(result);
-        else reject(new Error('Could not process image.'));
+        if (!result) {
+          reject(new Error('Could not process image.'));
+          return;
+        }
+        if (mime !== 'image/png' && result.type && result.type !== mime) {
+          reject(new Error((OUTPUT_EXT[mime] || 'Selected format').toUpperCase() + ' export is not supported by this browser.'));
+          return;
+        }
+        resolve(result);
       }, mime, quality);
     });
 
     const blobForTarget = async (mime) => {
       const targetBytes = Number(targetKbEl.value) * 1024;
-      const supportsQuality = mime === 'image/jpeg' || mime === 'image/webp';
+      const supportsQuality = mime === 'image/jpeg' || mime === 'image/webp' || mime === 'image/avif';
 
       if (!targetBytes || !supportsQuality) {
         return canvasToBlob(mime, Number(qualityEl.value));

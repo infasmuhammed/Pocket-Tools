@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Text Watermark</h2>
-  <p>Add custom text watermarks to your images locally.</p>
+  <p>Add a text watermark with size, opacity, position, and output format controls.</p>
 </div>
 
 <div class="image-workbench">
@@ -9,33 +9,51 @@
       <input type="file" id="wm-upload" accept="image/*,.heic,.heif,image/heic,image/heif">
       <div>
         <strong>Select Image</strong>
-        <span>Watermark settings are ready before upload.</span>
+        <span>JPG, PNG, WebP, GIF, BMP, HEIC, or HEIF.</span>
       </div>
     </div>
+    <div id="wm-file-status" class="selected-file">No image selected yet.</div>
   </section>
 
   <section id="wm-controls" class="image-panel">
     <div class="settings-grid">
       <div class="input-group">
-        <label>Watermark Text</label>
-        <input type="text" id="wm-text" value="© MyBrand">
+        <label for="wm-text">Watermark Text</label>
+        <input type="text" id="wm-text" value="Pocket Tools">
       </div>
       <div class="input-group">
-      <label>Position</label>
-      <select id="wm-pos">
-        <option value="bottom-right">Bottom Right</option>
-        <option value="bottom-left">Bottom Left</option>
-        <option value="top-right">Top Right</option>
-        <option value="top-left">Top Left</option>
-        <option value="center">Center</option>
-      </select>
-    </div>
+        <label for="wm-pos">Position</label>
+        <select id="wm-pos">
+          <option value="bottom-right">Bottom Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="top-right">Top Right</option>
+          <option value="top-left">Top Left</option>
+          <option value="center">Center</option>
+        </select>
+      </div>
       <div class="input-group">
-      <label>Color</label>
-      <input type="color" id="wm-color" value="#ffffff" class="color-input">
+        <label for="wm-color">Color</label>
+        <input type="color" id="wm-color" value="#ffffff" class="color-input">
+      </div>
+      <div class="input-group">
+        <label>Size: <span id="wm-size-val">5%</span></label>
+        <input type="range" id="wm-size" min="2" max="14" step="0.5" value="5">
+      </div>
+      <div class="input-group">
+        <label>Opacity: <span id="wm-opacity-val">80%</span></label>
+        <input type="range" id="wm-opacity" min="0.1" max="1" step="0.05" value="0.8">
+      </div>
+      <div class="input-group">
+        <label for="wm-format">Output Format</label>
+        <select id="wm-format">
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
       </div>
     </div>
     <button id="wm-download" class="btn">Download Watermarked Image</button>
   </section>
 </div>
 <canvas id="wm-canvas" class="hidden"></canvas>
+

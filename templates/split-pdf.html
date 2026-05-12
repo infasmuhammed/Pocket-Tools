@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Split PDF</h2>
-  <p>Extract specific pages from a PDF document.</p>
+  <p>Choose the pages to keep, preview the first page, and see how many pages will be removed.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -9,22 +9,39 @@
       <input type="file" id="sp-upload" accept="application/pdf">
       <div>
         <strong>Select PDF</strong>
-        <span>Extract a custom page range into a new PDF.</span>
+        <span>Use page ranges like 1-3, 5, 8-10. The result downloads as a new PDF.</span>
       </div>
     </div>
+    <div id="sp-file-status" class="selected-file">No PDF selected yet.</div>
   </section>
 
   <section id="sp-controls" class="tool-panel">
-    <div class="input-group">
-      <label>Pages to Extract</label>
-      <input type="text" id="sp-pages" placeholder="Example: 1-3, 5, 8-10">
-      <span class="field-hint">Use commas for separate pages and hyphens for ranges.</span>
+    <div class="settings-grid">
+      <div class="input-group">
+        <label for="sp-pages">Pages to Keep / Extract</label>
+        <input type="text" id="sp-pages" placeholder="Example: 1-3, 5, 8-10">
+        <span class="field-hint">Everything not listed here will be left out of the downloaded PDF.</span>
+      </div>
     </div>
-    <ul class="option-list">
-      <li>Single page: 4</li>
-      <li>Range: 2-7</li>
-      <li>Mixed: 1, 3, 5-9</li>
-    </ul>
-    <button id="sp-generate" class="btn">Extract Pages</button>
+    <div class="metric-grid">
+      <div class="metric"><span>Total Pages</span><strong id="sp-total-pages">0</strong></div>
+      <div class="metric"><span>Pages Kept</span><strong id="sp-keep-count">0</strong></div>
+      <div class="metric"><span>Pages Removed</span><strong id="sp-remove-count">0</strong></div>
+    </div>
+    <div class="preview-grid" style="margin-top:14px;">
+      <div>
+        <h3>Page Preview</h3>
+        <div class="preview-stage">
+          <div id="sp-empty" class="preview-empty">Select a PDF to preview the first page.</div>
+          <canvas id="sp-preview" class="hidden"></canvas>
+        </div>
+      </div>
+      <div>
+        <h3>Before / After</h3>
+        <div id="sp-page-strip" class="page-strip"></div>
+      </div>
+    </div>
+    <button id="sp-generate" class="btn">Download Extracted PDF</button>
   </section>
 </div>
+

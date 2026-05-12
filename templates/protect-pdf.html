@@ -1,6 +1,6 @@
 <div class="tool-header">
-  <h2>Protect PDF</h2>
-  <p>This offline build cannot safely encrypt PDFs yet. It will not create a fake protected file.</p>
+  <h2>Password Protect PDF</h2>
+  <p>AES-256 encryption, fully offline. Files never leave your device.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -9,28 +9,30 @@
       <input type="file" id="ppr-upload" accept="application/pdf">
       <div>
         <strong>Select PDF</strong>
-        <span>Encryption requires a PDF engine with password-writing support.</span>
+        <span>Processed locally in your browser. No upload.</span>
       </div>
     </div>
+    <div id="ppr-file-status" class="selected-file">No PDF selected yet.</div>
   </section>
 
-  <section id="ppr-controls" class="tool-panel">
+  <section class="tool-panel">
     <div class="settings-grid">
       <div class="input-group">
-        <label>Password</label>
-        <input type="password" id="ppr-pass" placeholder="Enter password...">
-        <span class="field-hint">Use a strong password. This offline engine can validate the setup but cannot encrypt yet.</span>
-        <button type="button" id="ppr-suggest" class="btn btn-secondary">Generate Suggested Password</button>
+        <label for="ppr-pass">Password</label>
+        <input type="password" id="ppr-pass" placeholder="Enter password…" autocomplete="new-password">
+        <span class="field-hint">Keep a separate copy — there is no recovery.</span>
+        <button type="button" id="ppr-suggest" class="btn btn-secondary">Generate Strong Password</button>
       </div>
       <div class="input-group">
-        <label>Suggested Setup</label>
+        <label>What gets locked</label>
         <ul class="option-list">
-          <li>Minimum 12 characters</li>
-          <li>Use letters, numbers, and symbols</li>
-          <li>Keep a copy of the password separately</li>
+          <li>Opening the PDF requires the password</li>
+          <li>Printing &amp; copying are restricted</li>
+          <li>AES-256 (PDF 1.7 spec)</li>
         </ul>
       </div>
     </div>
-    <button id="ppr-generate" class="btn">Check Protection Support</button>
+    <button id="ppr-generate" class="btn">Protect &amp; Download</button>
+    <div id="ppr-status" class="inline-status">Ready.</div>
   </section>
 </div>

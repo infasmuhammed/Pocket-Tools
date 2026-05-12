@@ -1,0 +1,27 @@
+{
+  "name": "pocket-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sw.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infasmuhammed/Pocket-Tools.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/infasmuhammed/Pocket-Tools/issues"
+  },
+  "homepage": "https://github.com/infasmuhammed/Pocket-Tools#readme",
+  "dependencies": {
+    "@neslinesli93/qpdf-wasm": "^0.3.0"
+  }
+}

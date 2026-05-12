@@ -13,7 +13,14 @@ function ensureToastContainer() {
   return c;
 }
 
+const recentToasts = new Map();
+
 function spawnToast(message, type) {
+  const key = `${type || 'info'}:${String(message)}`;
+  const now = Date.now();
+  if ((recentToasts.get(key) || 0) + 1800 > now) return;
+  recentToasts.set(key, now);
+
   const container = ensureToastContainer();
   const toast = document.createElement('div');
   toast.className = `toast ${type || ''}`.trim();
@@ -31,6 +38,43 @@ export const UI = {
   showToast(message, type = 'info') { spawnToast(message, type); },
   showError(message) { spawnToast(message, 'error'); },
   showSuccess(message) { spawnToast(message, 'success'); },
+
+  async copyText(text, successMessage = 'Copied to clipboard.') {
+    const value = String(text || '');
+    if (!value) {
+      spawnToast('No text to copy', 'error');
+      return false;
+    }
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        throw new Error('Clipboard API unavailable');
+      }
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = value;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      ta.style.left = '-1000px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        if (!document.execCommand('copy')) throw new Error('Copy command failed');
+      } catch {
+        ta.remove();
+        spawnToast('Failed to copy', 'error');
+        return false;
+      }
+      ta.remove();
+    }
+
+    spawnToast(successMessage, 'success');
+    return true;
+  },
 
   // Accepts a button element OR an id string.
   setLoading(target, isLoading, originalText) {

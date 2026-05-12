@@ -1,5 +1,6 @@
 import { UI } from '../core/ui.js';
 import { FileHelper } from '../core/file.js';
+import { loadPdfJs } from '../core/lazy.js';
 
 export default {
   async init() {
@@ -26,27 +27,16 @@ export default {
       
       btnGen.disabled = true;
       btnGen.textContent = 'Loading Engine...';
-      
-      if (!window['pdfjs-dist/build/pdf']) {
-        try {
-          await new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = './lib/pdf.min.js';
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-          });
-          const pdfjsLib = window['pdfjs-dist/build/pdf'];
-          pdfjsLib.GlobalWorkerOptions.workerSrc = './lib/pdf.worker.min.js';
-        } catch (e) {
-          btnGen.disabled = false;
-          btnGen.textContent = 'Extract Text';
-          return UI.showError('Failed to load PDF engine offline.');
-        }
+
+      let pdfjsLib;
+      try {
+        pdfjsLib = await loadPdfJs();
+      } catch (e) {
+        btnGen.disabled = false;
+        btnGen.textContent = 'Extract Text';
+        return UI.showError('Failed to load PDF engine offline.');
       }
 
-      const pdfjsLib = window['pdfjs-dist/build/pdf'];
-      
       UI.showToast('Extracting Text...', 'info');
       btnGen.textContent = 'Extracting...';
       
@@ -75,9 +65,7 @@ export default {
 
     btnCopy.onclick = () => {
       if (!outEl.value) return UI.showError('No text to copy');
-      navigator.clipboard.writeText(outEl.value)
-        .then(() => UI.showToast('Copied to clipboard!', 'success'))
-        .catch(() => UI.showError('Failed to copy'));
+      return UI.copyText(outEl.value);
     };
   }
 };

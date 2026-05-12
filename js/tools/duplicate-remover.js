@@ -4,21 +4,34 @@ export default {
   init() {
     const input = document.getElementById('dl-input');
     const output = document.getElementById('dl-output');
-    const stats = document.getElementById('dl-stats');
-    
+    const originalLines = document.getElementById('dl-original-lines');
+    const uniqueLines = document.getElementById('dl-unique-lines');
+    const removedLines = document.getElementById('dl-removed-lines');
+    const removedList = document.getElementById('dl-removed-list');
+
     document.getElementById('btn-remove-dup').onclick = () => {
-      if (!input.value) return;
-      const lines = input.value.split('\n');
-      const unique = [...new Set(lines)];
+      const lines = input.value.split(/\r?\n/);
+      const seen = new Set();
+      const unique = [];
+      const removed = [];
+      for (const line of lines) {
+        const key = line.trim().toLowerCase();
+        if (seen.has(key)) removed.push(line);
+        else {
+          seen.add(key);
+          unique.push(line);
+        }
+      }
       output.value = unique.join('\n');
-      stats.textContent = `Removed ${lines.length - unique.length} duplicate(s).`;
+      originalLines.textContent = String(input.value ? lines.length : 0);
+      uniqueLines.textContent = String(input.value ? unique.length : 0);
+      removedLines.textContent = String(removed.length);
+      removedList.textContent = removed.length ? 'Removed: ' + removed.slice(0, 8).map((line) => line || '[blank line]').join(', ') + (removed.length > 8 ? '...' : '') : 'No duplicate lines found.';
     };
-    
+
     document.getElementById('dl-copy').onclick = () => {
       if (!output.value) return UI.showError('No text to copy');
-      navigator.clipboard.writeText(output.value)
-        .then(() => UI.showToast('Copied to clipboard!', 'success'))
-        .catch(() => UI.showError('Failed to copy'));
+      return UI.copyText(output.value);
     };
   }
 };

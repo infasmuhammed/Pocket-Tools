@@ -55,7 +55,7 @@ const ICONS = {
 export const TOOLS = [
   // PHOTOS
   { id: 'image-compressor',  name: 'Image Compressor + Converter', category: 'photos', desc: 'Batch resize, compress, convert', icon: ICONS.image },
-  { id: 'format-converter',  name: 'Image Format Converter', category: 'photos',  desc: 'Batch convert JPG, PNG, WebP',       icon: ICONS.swap },
+  { id: 'format-converter',  name: 'Image Format Converter', category: 'photos',  desc: 'Batch convert PNG, JPG, WebP, AVIF',       icon: ICONS.swap },
   { id: 'bulk-renamer',      name: 'Bulk Photo Renamer', category: 'photos',       desc: 'Rename photos into a ZIP',           icon: ICONS.rename },
   { id: 'social-resizer',    name: 'Social Media Resizer', category: 'photos',    desc: 'Instagram, YouTube, etc.',           icon: ICONS.resize },
   { id: 'ratio-cropper',     name: 'Aspect Ratio Cropper', category: 'photos',    desc: '1:1, 4:5, 16:9, custom',             icon: ICONS.crop },
@@ -67,12 +67,12 @@ export const TOOLS = [
   // DOCUMENTS (8 — bonus rotate-pdf, unprotect-pdf, receipt-enhancer)
   { id: 'merge-pdf',         name: 'Merge PDF',            category: 'documents', desc: 'Combine multiple PDFs',              icon: ICONS.merge,  needsPdfLib: true },
   { id: 'split-pdf',         name: 'Split PDF',            category: 'documents', desc: 'Split into separate pages',          icon: ICONS.split,  needsPdfLib: true },
-  { id: 'protect-pdf',       name: 'Password Protect PDF', category: 'documents', desc: 'PDF encryption not supported yet',    icon: ICONS.lock,   needsPdfLib: true },
+  { id: 'protect-pdf',       name: 'Password Protect PDF', category: 'documents', desc: 'Encrypt and download a PDF',          icon: ICONS.lock,   needsPdfLib: true },
   { id: 'page-numbers',      name: 'PDF Page Numberer',    category: 'documents', desc: 'Add page numbers',                   icon: ICONS.hash,   needsPdfLib: true },
   { id: 'extract-pdf',       name: 'Extract PDF Text',     category: 'documents', desc: 'Pull all text out of a PDF',         icon: ICONS.read,   needsPdfJs: true },
   { id: 'rotate-pdf',        name: 'Rotate PDF',           category: 'documents', desc: 'Rotate pages 90°/180°/270°',         icon: ICONS.rotate, needsPdfLib: true },
   { id: 'unprotect-pdf',     name: 'Unprotect PDF',        category: 'documents', desc: 'Remove a known password',            icon: ICONS.unlock, needsPdfLib: true },
-  { id: 'id-masker',         name: 'Aadhaar / PAN Masker',  category: 'documents', desc: 'Mask sensitive ID details',          icon: ICONS.shield, needsPdfJs: true },
+  { id: 'id-masker',         name: 'ID Masker',            category: 'documents', desc: 'Mask sensitive ID details',          icon: ICONS.shield, needsPdfJs: true },
   { id: 'receipt-enhancer',  name: 'Receipt Enhancer',     category: 'documents', desc: 'B/W + contrast for receipts',        icon: ICONS.contrast },
 
   // TEXT (6)
@@ -84,7 +84,7 @@ export const TOOLS = [
   { id: 'reading-time',      name: 'Reading Time',         category: 'text',      desc: 'Estimate read & speak time',         icon: ICONS.read },
 
   // MATH (5)
-  { id: 'bill-splitter',     name: 'Bill Splitter',        category: 'math',      desc: 'Split a bill, with tip',             icon: ICONS.split2 },
+  { id: 'bill-splitter',     name: 'Bill Splitter',        category: 'math',      desc: 'Equal, shares, percent, amount',             icon: ICONS.split2 },
   { id: 'discount-calculator',name:'Discount Calculator',  category: 'math',      desc: 'Final price after discount',         icon: ICONS.percent },
   { id: 'emi-calculator',    name: 'EMI Calculator',       category: 'math',      desc: 'Monthly loan EMI',                   icon: ICONS.emi },
   { id: 'percentage-change', name: 'Percentage Change',    category: 'math',      desc: 'Increase / decrease %',              icon: ICONS.delta },
@@ -92,7 +92,7 @@ export const TOOLS = [
   { id: 'grocery-calculator',name: 'Grocery Calculator',    category: 'math',      desc: 'List items and total prices',        icon: ICONS.cart },
 
   // TIME (4)
-  { id: 'pomodoro',          name: 'Pomodoro Timer',       category: 'time',      desc: 'Focus 25/5 timer',                   icon: ICONS.timer },
+  { id: 'pomodoro',          name: 'Pomodoro Timer',       category: 'time',      desc: 'Custom focus and break timer',                   icon: ICONS.timer },
   { id: 'days-between',      name: 'Days Between Dates',   category: 'time',      desc: 'Days between two dates',             icon: ICONS.cal },
   { id: 'timezone',          name: 'Timezone Matcher',     category: 'time',      desc: 'Compare timezones',                  icon: ICONS.globe },
   { id: 'stopwatch',         name: 'Stopwatch',            category: 'time',      desc: 'Lap stopwatch',                      icon: ICONS.watch },

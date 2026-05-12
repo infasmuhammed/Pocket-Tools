@@ -1,21 +1,60 @@
 <div class="tool-header">
   <h2>Pomodoro Timer</h2>
-  <p>Stay focused with 25-minute work intervals and 5-minute breaks.</p>
+  <p>Build a focus cycle that matches your day instead of being locked to 25 and 5.</p>
 </div>
 <div class="tool-dashboard">
   <section class="tool-panel timer-panel">
     <div id="pomo-display" class="timer-display">25:00</div>
     <div id="pomo-status" class="timer-status">Work Time</div>
+    <div class="metric-grid" style="margin-top:16px;">
+      <div class="metric">
+        <span>Completed Work Sessions</span>
+        <strong id="pomo-cycles">0</strong>
+      </div>
+      <div class="metric">
+        <span>Current Plan</span>
+        <strong id="pomo-plan">25 / 5 / 15</strong>
+      </div>
+    </div>
   </section>
+
   <section class="tool-panel">
+    <div class="segmented-control" aria-label="Pomodoro presets">
+      <button type="button" class="active" data-pomo-preset="25,5,15,4">Classic</button>
+      <button type="button" data-pomo-preset="50,10,20,3">Deep Work</button>
+      <button type="button" data-pomo-preset="15,3,10,4">Sprint</button>
+    </div>
+
+    <div class="settings-grid">
+      <div class="input-group">
+        <label for="pomo-work-min">Work Minutes</label>
+        <input type="number" id="pomo-work-min" min="1" max="180" value="25">
+      </div>
+      <div class="input-group">
+        <label for="pomo-break-min">Short Break</label>
+        <input type="number" id="pomo-break-min" min="1" max="60" value="5">
+      </div>
+      <div class="input-group">
+        <label for="pomo-long-break-min">Long Break</label>
+        <input type="number" id="pomo-long-break-min" min="1" max="90" value="15">
+      </div>
+      <div class="input-group">
+        <label for="pomo-cycle-count">Long Break After</label>
+        <input type="number" id="pomo-cycle-count" min="1" max="12" value="4">
+        <span class="field-hint">Number of work sessions before the long break.</span>
+      </div>
+    </div>
+
     <div class="button-row">
       <button id="btn-pomo-start" class="btn">Start</button>
       <button id="btn-pomo-pause" class="btn btn-secondary hidden">Pause</button>
       <button id="btn-pomo-reset" class="btn btn-secondary">Reset</button>
     </div>
-    <div class="button-row">
-      <button id="btn-pomo-work" class="btn btn-secondary">25m Work</button>
-      <button id="btn-pomo-break" class="btn btn-secondary">5m Break</button>
+    <div class="button-row" aria-label="Timer mode">
+      <button id="btn-pomo-work" class="btn btn-secondary">Work</button>
+      <button id="btn-pomo-break" class="btn btn-secondary">Short Break</button>
+      <button id="btn-pomo-long-break" class="btn btn-secondary">Long Break</button>
     </div>
   </section>
 </div>
+

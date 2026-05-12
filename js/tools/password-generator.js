@@ -62,9 +62,7 @@ export default {
 
     document.getElementById('btn-pg-copy').onclick = () => {
       if (outEl.textContent === 'Click Generate') return UI.showError('Generate a password first');
-      navigator.clipboard.writeText(outEl.textContent)
-        .then(() => UI.showToast('Password copied!', 'success'))
-        .catch(() => UI.showError('Failed to copy'));
+      return UI.copyText(outEl.textContent, 'Password copied.');
     };
     
     generate();

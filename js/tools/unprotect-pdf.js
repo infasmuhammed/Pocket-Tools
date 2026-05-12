@@ -1,6 +1,17 @@
 import { UI } from '../core/ui.js';
 import { FileHelper } from '../core/file.js';
-import { loadPdfJs, loadPdfLib } from '../core/lazy.js';
+
+let qpdfPromise = null;
+
+async function loadQpdf() {
+  if (!qpdfPromise) {
+    qpdfPromise = import('../../lib/qpdf.js').then(({ default: createModule }) => createModule({
+      locateFile: () => 'lib/qpdf.wasm',
+      noInitialRun: true,
+    }));
+  }
+  return qpdfPromise;
+}
 
 export default {
   async init() {
@@ -8,7 +19,7 @@ export default {
     const controls = document.getElementById('up-controls');
     const passEl = document.getElementById('up-pass');
     const btnGen = document.getElementById('up-generate');
-    
+
     let currentFile = null;
 
     upload.onchange = async (e) => {
@@ -27,66 +38,28 @@ export default {
 
     btnGen.onclick = async () => {
       if (!currentFile || !passEl.value) return UI.showError('Enter the current password');
-      
+
       UI.showToast('Unlocking...', 'info');
       btnGen.disabled = true;
       btnGen.textContent = 'Unlocking...';
-      
+
+      const inputPath = `/input-${Date.now()}.pdf`;
+      const outputPath = `/output-${Date.now()}.pdf`;
+
       try {
-        const [pdfjsLib, pdfLib] = await Promise.all([loadPdfJs(), loadPdfLib()]);
-        const { PDFDocument } = pdfLib;
-        const arrayBuffer = await currentFile.arrayBuffer();
+        const qpdf = await loadQpdf();
+        qpdf.FS.writeFile(inputPath, new Uint8Array(await currentFile.arrayBuffer()));
 
-        const sourcePdf = await pdfjsLib.getDocument({
-          data: arrayBuffer,
-          password: passEl.value,
-        }).promise;
+        const exitCode = qpdf.callMain([
+          `--password=${passEl.value}`,
+          '--decrypt',
+          inputPath,
+          outputPath,
+        ]);
 
-        const unlockedPdf = await PDFDocument.create();
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        if (!ctx) throw new Error('Canvas is unavailable.');
-
-        for (let i = 1; i <= sourcePdf.numPages; i++) {
-          btnGen.textContent = `Unlocking ${i}/${sourcePdf.numPages}`;
-          const sourcePage = await sourcePdf.getPage(i);
-          const pageViewport = sourcePage.getViewport({ scale: 1 });
-          const renderViewport = sourcePage.getViewport({ scale: 2 });
-
-          canvas.width = Math.ceil(renderViewport.width);
-          canvas.height = Math.ceil(renderViewport.height);
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-          await sourcePage.render({
-            canvasContext: ctx,
-            viewport: renderViewport,
-          }).promise;
-
-          const pngBytes = await new Promise((resolve, reject) => {
-            canvas.toBlob(async (blob) => {
-              try {
-                if (!blob) throw new Error('Could not render PDF page.');
-                resolve(await blob.arrayBuffer());
-              } catch (err) {
-                reject(err);
-              }
-            }, 'image/png');
-          });
-
-          const image = await unlockedPdf.embedPng(pngBytes);
-          const newPage = unlockedPdf.addPage([pageViewport.width, pageViewport.height]);
-          newPage.drawImage(image, {
-            x: 0,
-            y: 0,
-            width: pageViewport.width,
-            height: pageViewport.height,
-          });
-        }
-
-        await sourcePdf.destroy();
-        const pdfBytes = await unlockedPdf.save();
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-        FileHelper.downloadBlob('unlocked.pdf', blob);
+        if (exitCode) throw new Error(`qpdf exited with ${exitCode}`);
+        const outputBytes = qpdf.FS.readFile(outputPath);
+        FileHelper.downloadBlob('unlocked.pdf', new Blob([outputBytes], { type: 'application/pdf' }));
 
         UI.showToast('Unlocked PDF created!', 'success');
         passEl.value = '';
@@ -94,6 +67,11 @@ export default {
         console.error(err);
         UI.showError('Incorrect password, invalid PDF, or unsupported encryption.');
       } finally {
+        try {
+          const qpdf = await qpdfPromise;
+          try { qpdf.FS.unlink(inputPath); } catch {}
+          try { qpdf.FS.unlink(outputPath); } catch {}
+        } catch {}
         btnGen.disabled = false;
         btnGen.textContent = 'Unlock PDF';
       }

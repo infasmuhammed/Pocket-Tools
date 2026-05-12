@@ -1,6 +1,9 @@
 import { UI } from './core/ui.js';
 import { getTool, isValidToolId } from './registry.js';
 
+const HOME_SCROLL_KEY = 'pt-home-scroll';
+const HOME_RETURN_TOOL_KEY = 'pt-home-return-tool';
+
 function setAppTitle(element, title) {
   element.replaceChildren();
   const logo = document.createElement('img');
@@ -36,8 +39,20 @@ class Router {
       viewHome.classList.remove('hidden');
       btnBack.classList.add('hidden');
       setAppTitle(appTitle, 'Pocket Tools');
+      delete toolContainer.dataset.category;
+      const savedScroll = Number(sessionStorage.getItem(HOME_SCROLL_KEY) || 0);
+      const returnToolId = sessionStorage.getItem(HOME_RETURN_TOOL_KEY);
       this.currentToolId = null;
-      window.scrollTo(0, 0);
+      requestAnimationFrame(() => {
+        const returnCard = returnToolId
+          ? document.querySelector(`.tool-card[href="#/tool/${encodeURIComponent(returnToolId)}"]`)
+          : null;
+        if (returnCard) {
+          returnCard.scrollIntoView({ block: 'center' });
+        } else {
+          window.scrollTo(0, savedScroll);
+        }
+      });
       return;
     }
 
@@ -60,6 +75,7 @@ class Router {
 
       const tool = getTool(toolId);
       setAppTitle(appTitle, tool.name);
+      toolContainer.dataset.category = tool.category;
       toolContainer.replaceChildren();
       const skeleton = document.createElement('div');
       skeleton.className = 'skeleton';

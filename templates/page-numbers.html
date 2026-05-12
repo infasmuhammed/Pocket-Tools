@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Add Page Numbers</h2>
-  <p>Add professional page numbering to a PDF.</p>
+  <p>Preview page number placement, then control position, style, size, and margin.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -9,42 +9,61 @@
       <input type="file" id="pn-upload" accept="application/pdf">
       <div>
         <strong>Select PDF</strong>
-        <span>Configure numbering before adding it to the document.</span>
+        <span>Preview the first page before downloading the numbered PDF.</span>
       </div>
     </div>
+    <div id="pn-file-status" class="selected-file">No PDF selected yet.</div>
   </section>
 
   <section id="pn-controls" class="tool-panel">
-    <div class="settings-grid">
-      <div class="input-group">
-        <label>Position</label>
-        <select id="pn-pos">
-          <option value="bottom-center">Bottom Center</option>
-          <option value="bottom-right">Bottom Right</option>
-          <option value="bottom-left">Bottom Left</option>
-          <option value="top-right">Top Right</option>
-          <option value="top-center">Top Center</option>
-          <option value="top-left">Top Left</option>
-        </select>
+    <div class="preview-grid">
+      <div>
+        <h3>Preview</h3>
+        <div class="preview-stage">
+          <div id="pn-empty" class="preview-empty">Select a PDF to preview page number placement.</div>
+          <canvas id="pn-preview" class="hidden"></canvas>
+        </div>
+        <div id="pn-preview-status" class="inline-status">The preview shows page 1 with your current settings.</div>
       </div>
-      <div class="input-group">
-        <label>Number Style</label>
-        <select id="pn-style">
-          <option value="number">1, 2, 3</option>
-          <option value="page-number">Page 1</option>
-          <option value="page-of-total">Page 1 of 10</option>
-          <option value="dash-number">- 1 -</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <label>Start Number</label>
-        <input type="number" id="pn-start" min="0" value="1">
-      </div>
-      <div class="input-group">
-        <label>Font Size</label>
-        <input type="number" id="pn-size" min="8" max="36" value="12">
+      <div>
+        <div class="settings-grid">
+          <div class="input-group">
+            <label for="pn-pos">Position</label>
+            <select id="pn-pos">
+              <option value="bottom-center">Bottom Center</option>
+              <option value="bottom-right">Bottom Right</option>
+              <option value="bottom-left">Bottom Left</option>
+              <option value="top-right">Top Right</option>
+              <option value="top-center">Top Center</option>
+              <option value="top-left">Top Left</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="pn-style">Number Style</label>
+            <select id="pn-style">
+              <option value="number">1, 2, 3</option>
+              <option value="page-number">Page 1</option>
+              <option value="page-of-total">Page 1 of 10</option>
+              <option value="dash-number">- 1 -</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="pn-start">Start Number</label>
+            <input type="number" id="pn-start" min="0" value="1">
+          </div>
+          <div class="input-group">
+            <label for="pn-size">Font Size</label>
+            <input type="number" id="pn-size" min="8" max="48" value="12">
+          </div>
+          <div class="input-group">
+            <label for="pn-margin">Page Margin</label>
+            <input type="number" id="pn-margin" min="8" max="120" value="24">
+            <span class="field-hint">Increase this if the number touches existing footer/header content.</span>
+          </div>
+        </div>
+        <button id="pn-generate" class="btn">Download Numbered PDF</button>
       </div>
     </div>
-    <button id="pn-generate" class="btn">Add Numbers</button>
   </section>
 </div>
+

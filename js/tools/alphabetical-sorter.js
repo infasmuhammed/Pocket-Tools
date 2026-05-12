@@ -7,8 +7,8 @@ export default {
     
     const sortLines = (desc = false) => {
       if (!input.value) return;
-      const lines = input.value.split('\n').filter(l => l.trim() !== '');
-      lines.sort((a, b) => a.localeCompare(b));
+      const lines = input.value.split('\n').map(l => l.trim()).filter(l => l !== '');
+      lines.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
       if (desc) lines.reverse();
       output.value = lines.join('\n');
     };
@@ -18,9 +18,7 @@ export default {
     
     document.getElementById('as-copy').onclick = () => {
       if (!output.value) return UI.showError('No text to copy');
-      navigator.clipboard.writeText(output.value)
-        .then(() => UI.showToast('Copied to clipboard!', 'success'))
-        .catch(() => UI.showError('Failed to copy'));
+      return UI.copyText(output.value);
     };
   }
 };

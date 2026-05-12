@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Merge PDFs</h2>
-  <p>Combine multiple PDF files into one.</p>
+  <p>Combine PDFs in a clear order. Reorder files before creating the final document.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -9,9 +9,10 @@
       <input type="file" id="mp-upload" accept="application/pdf" multiple>
       <div>
         <strong>Select PDFs</strong>
-        <span>Choose files in the order they should appear in the final document.</span>
+        <span>Choose 2 or more PDFs. Use Move Up/Down to set the final order.</span>
       </div>
     </div>
+    <div id="mp-file-status" class="selected-file">No PDFs selected yet.</div>
   </section>
 
   <section id="mp-controls" class="tool-panel">
@@ -21,15 +22,19 @@
         <strong id="mp-count">0</strong>
       </div>
       <div class="metric">
+        <span>Total Pages</span>
+        <strong id="mp-pages">0</strong>
+      </div>
+      <div class="metric">
         <span>Output</span>
         <strong>Single PDF</strong>
       </div>
-      <div class="metric">
-        <span>Order</span>
-        <strong>Selection</strong>
-      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <h3>Merge Order</h3>
+      <div id="mp-list" class="file-order-list"></div>
     </div>
     <button id="mp-generate" class="btn">Merge PDFs</button>
-    <span class="field-hint">Tip: select files together in the exact order you want them merged.</span>
   </section>
 </div>
+

@@ -1,6 +1,6 @@
 <div class="tool-header">
   <h2>Case Converter</h2>
-  <p>Convert text to UPPERCASE, lowercase, Title Case, and more.</p>
+  <p>Convert text casing and see how much of the text changed.</p>
 </div>
 
 <div class="tool-dashboard">
@@ -16,6 +16,25 @@
       <button class="btn btn-secondary" id="btn-sentence">Sentence case</button>
     </div>
   </section>
+
+  <section class="tool-panel">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Characters</span>
+        <strong id="cc-char-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Letters Changed</span>
+        <strong id="cc-change-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Words</span>
+        <strong id="cc-word-count">0</strong>
+      </div>
+    </div>
+    <div id="cc-summary" class="inline-status">Choose a case action to see the change count.</div>
+  </section>
+
   <section class="tool-panel">
     <div class="input-group">
       <label for="cc-output">Result</label>
@@ -24,3 +43,4 @@
     <button id="cc-copy" class="btn">Copy Result</button>
   </section>
 </div>
+
