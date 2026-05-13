@@ -2324,22 +2324,26 @@ main {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: .82s;
-    animation-timing-function: cubic-bezier(.22,1,.36,1);
-    mix-blend-mode: normal;
+  ::view-transition-old(root) {
+    animation: none;
+    z-index: 1;
   }
-
   ::view-transition-new(root) {
-    animation-name: theme-reveal;
+    z-index: 2;
+    animation: theme-reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    mix-blend-mode: normal;
   }
 }
 
 @keyframes theme-reveal {
-  from { clip-path: circle(0 at var(--theme-x) var(--theme-y)); }
-  to { clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y)); }
+  from { clip-path: circle(0 at var(--theme-x, 50%) var(--theme-y, 50%)); }
+  to   { clip-path: circle(var(--theme-r, 150vmax) at var(--theme-x, 50%) var(--theme-y, 50%)); }
 }
+
+/* Sun/moon icon swap polish */
+#theme-toggle svg { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .25s ease; }
+#theme-toggle:hover svg { transform: rotate(15deg); }
+#theme-toggle:active svg { transform: scale(.9) rotate(15deg); }
 
 /* Final zip-match pass: same layout/motion as reference, monochrome brand skin */
 :root {
