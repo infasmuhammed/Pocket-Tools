@@ -1,0 +1,51 @@
+<div class="tool-header">
+      <h2>Base64 Encoder Decoder</h2>
+      <p>Encode and decode UTF-8 text. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Text or file source</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="b64-input">Text</label>
+      <textarea id="b64-input" class="textarea" rows="8" spellcheck="false">Pocket Dev ships offline-first tools for developers.</textarea>
+    </div>
+  
+          <div class="control-grid">
+            <div class="field"><label for="b64-mode">Output style</label><select id="b64-mode" class="select"><option value="standard">Standard Base64</option><option value="url">URL-safe Base64</option></select></div>
+            <div class="field"><label for="b64-file">Optional file</label><input id="b64-file" class="input" type="file"></div>
+          </div>
+          <div class="action-row">
+            <button id="b64-encode" class="btn" type="button">Encode text</button>
+            <button id="b64-decode" class="btn-secondary" type="button">Decode text</button>
+            <button id="b64-file-run" class="btn-secondary" type="button">Encode file</button>
+            <button id="b64-swap" class="btn-secondary" type="button">Move output to input</button>
+          </div>
+        
+    </div>
+  
+        <div id="b64-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="b64-metrics"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#b64-output">Copy</button>
+      </div>
+      <pre id="b64-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

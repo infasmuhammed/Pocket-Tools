@@ -1,0 +1,48 @@
+<div class="tool-header">
+      <h2>CSV JSON Converter</h2>
+      <p>Convert CSV and JSON arrays. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Converter input</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="cj-input">Input</label>
+      <textarea id="cj-input" class="textarea" rows="10" spellcheck="false">name,role\nAsha,Developer\nNoah,Designer</textarea>
+    </div>
+  
+          <div class="control-grid">
+            <div class="field"><label for="cj-delimiter">Delimiter</label><select id="cj-delimiter" class="select"><option value=",">Comma</option><option value=";">Semicolon</option><option value="\t">Tab</option></select></div>
+            <div class="field"><label for="cj-pretty">Output</label><select id="cj-pretty" class="select"><option value="pretty">Pretty JSON</option><option value="compact">Compact JSON</option></select></div>
+          </div>
+          <div class="action-row">
+            <button id="cj-to-json" class="btn" type="button">CSV to JSON</button>
+            <button id="cj-to-csv" class="btn-secondary" type="button">JSON to CSV</button>
+          </div>
+        
+    </div>
+  
+        <div id="cj-metrics"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#cj-output">Copy</button>
+      </div>
+      <pre id="cj-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

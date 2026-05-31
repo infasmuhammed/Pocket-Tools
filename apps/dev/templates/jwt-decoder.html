@@ -1,0 +1,63 @@
+<div class="tool-header">
+      <h2>JWT Decoder</h2>
+      <p>Decode header and payload. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Token</h3>
+          <p>This tool decodes header and payload only. It does not verify signatures.</p>
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="jwt-input">JWT</label>
+      <textarea id="jwt-input" class="textarea" rows="8" spellcheck="false">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUG9ja2V0IERldiIsImV4cCI6MTg5MzQ1NjAwMH0.signature</textarea>
+    </div>
+  
+          <div class="action-row">
+            <button id="jwt-decode" class="btn" type="button">Decode token</button>
+            <button id="jwt-clear" class="btn-secondary" type="button">Clear</button>
+          </div>
+        
+    </div>
+  
+        <div id="jwt-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="jwt-claims"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Header</span>
+        <button class="btn-secondary" type="button" data-copy-target="#jwt-header">Copy</button>
+      </div>
+      <pre id="jwt-header" class="output"></pre>
+    </div>
+  
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Payload</span>
+        <button class="btn-secondary" type="button" data-copy-target="#jwt-payload">Copy</button>
+      </div>
+      <pre id="jwt-payload" class="output"></pre>
+    </div>
+  
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Signature segment</span>
+        <button class="btn-secondary" type="button" data-copy-target="#jwt-signature">Copy</button>
+      </div>
+      <pre id="jwt-signature" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

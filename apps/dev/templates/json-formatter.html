@@ -1,0 +1,47 @@
+<div class="tool-header">
+      <h2>JSON Formatter</h2>
+      <p>Format, minify and sort JSON. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>JSON input</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="jf-input">JSON</label>
+      <textarea id="jf-input" class="textarea" rows="10" spellcheck="false">{ &quot;name&quot;: &quot;Pocket Dev&quot;, &quot;offline&quot;: true, &quot;tools&quot;: [&quot;json&quot;, &quot;regex&quot;] }</textarea>
+    </div>
+  
+          <div class="action-row">
+            <button id="jf-format" class="btn" type="button">Format</button>
+            <button id="jf-minify" class="btn-secondary" type="button">Minify</button>
+            <button id="jf-sort" class="btn-secondary" type="button">Sort keys</button>
+            <button id="jf-sample" class="btn-secondary" type="button">Load sample</button>
+          </div>
+        
+    </div>
+  
+        <div id="jf-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="jf-metrics"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#jf-output">Copy</button>
+      </div>
+      <pre id="jf-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

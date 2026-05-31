@@ -1,0 +1,41 @@
+<div class="tool-header">
+      <h2>Mobile Density Converter</h2>
+      <p>dp, pt, px and density buckets. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Density input</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="md-value">Base dp / pt value</label><input id="md-value" class="input" type="number" value="24"></div>
+            <div class="field"><label for="md-density">Custom density</label><input id="md-density" class="input" type="number" step="0.1" value="3"></div>
+            <div class="field"><label for="md-round">Rounding</label><select id="md-round" class="select"><option value="round">Nearest px</option><option value="ceil">Ceil</option><option value="floor">Floor</option><option value="none">Decimal</option></select></div>
+            <div class="field"><label for="md-css">CSS viewport width</label><input id="md-css" class="input" type="number" value="390"></div>
+          </div>
+        
+    </div>
+  
+        <div id="md-stats"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="md-table" class="mini-table"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#md-output">Copy</button>
+      </div>
+      <pre id="md-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

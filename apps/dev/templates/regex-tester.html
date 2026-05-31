@@ -1,0 +1,45 @@
+<div class="tool-header">
+      <h2>Regex Tester</h2>
+      <p>Test patterns and groups. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Pattern</h3>
+          
+        </div>
+      </div>
+      
+          <div class="grid-2">
+            <div class="field"><label for="rx-pattern">Regex</label><input id="rx-pattern" class="input" value="\b\w{5,}\b" spellcheck="false"></div>
+            <div class="field"><label for="rx-flags">Flags</label><input id="rx-flags" class="input" value="gi" spellcheck="false"></div>
+          </div>
+          
+    <div class="field">
+      <label for="rx-text">Test text</label>
+      <textarea id="rx-text" class="textarea" rows="10" spellcheck="false">Pocket Dev formats JSON, validates JSONL, and tests regex offline.</textarea>
+    </div>
+  
+        
+    </div>
+  
+        <div id="rx-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="rx-preview" class="match-preview"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Matches</span>
+        <button class="btn-secondary" type="button" data-copy-target="#rx-output">Copy</button>
+      </div>
+      <pre id="rx-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

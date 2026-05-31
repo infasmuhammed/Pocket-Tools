@@ -1,0 +1,39 @@
+<div class="tool-header">
+      <h2>App Icon Sizes</h2>
+      <p>PWA, iOS and Android icon checklist. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Export target</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="ais-platform">Platform</label><select id="ais-platform" class="select"><option value="all">All platforms</option><option value="pwa">PWA</option><option value="ios">iOS</option><option value="android">Android</option></select></div>
+            <div class="field"><label for="ais-base">Master artwork size</label><input id="ais-base" class="input" type="number" value="1024"></div>
+          </div>
+        
+    </div>
+  
+        <div id="ais-stats"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="ais-table" class="mini-table"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Recommended sizes</span>
+        <button class="btn-secondary" type="button" data-copy-target="#ais-output">Copy</button>
+      </div>
+      <pre id="ais-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

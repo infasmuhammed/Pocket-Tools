@@ -1,0 +1,46 @@
+<div class="tool-header">
+      <h2>JSONL Validator</h2>
+      <p>Validate JSON Lines datasets. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Dataset</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="jsonl-input">JSON Lines</label>
+      <textarea id="jsonl-input" class="textarea" rows="10" spellcheck="false">{&quot;prompt&quot;:&quot;Hello&quot;,&quot;completion&quot;:&quot;Hi&quot;}
+{&quot;prompt&quot;:&quot;Offline&quot;,&quot;completion&quot;:&quot;Private&quot;}</textarea>
+    </div>
+  
+          <div class="control-grid">
+            <div class="field"><label for="jsonl-schema">Expected shape</label><select id="jsonl-schema" class="select"><option value="any">Any object</option><option value="prompt">prompt + completion</option><option value="messages">messages array</option></select></div>
+            <div class="field"><label for="jsonl-sample">Quick sample</label><button id="jsonl-sample" class="btn-secondary" type="button">Load chat sample</button></div>
+          </div>
+        
+    </div>
+  
+        <div id="jsonl-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="jsonl-stats"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Validation</span>
+        <button class="btn-secondary" type="button" data-copy-target="#jsonl-output">Copy</button>
+      </div>
+      <pre id="jsonl-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

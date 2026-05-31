@@ -1,0 +1,41 @@
+<div class="tool-header">
+      <h2>UUID Generator</h2>
+      <p>UUID v4 and short IDs. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>ID options</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="uuid-count">Count</label><input id="uuid-count" class="input" type="number" min="1" max="200" value="10"></div>
+            <div class="field"><label for="uuid-mode">Mode</label><select id="uuid-mode" class="select"><option value="uuid">UUID v4</option><option value="short">Short ID</option><option value="hex">Random hex</option></select></div>
+            <div class="field"><label for="uuid-prefix">Prefix</label><input id="uuid-prefix" class="input" value="" placeholder="user_"></div>
+            <div class="field"><label for="uuid-format">Output</label><select id="uuid-format" class="select"><option value="lines">One per line</option><option value="json">JSON array</option><option value="csv">CSV</option></select></div>
+          </div>
+          <div class="action-row"><button id="uuid-run" class="btn" type="button">Generate IDs</button></div>
+        
+    </div>
+  
+        <div id="uuid-stats"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#uuid-output">Copy</button>
+      </div>
+      <pre id="uuid-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

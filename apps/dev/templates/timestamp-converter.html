@@ -1,0 +1,43 @@
+<div class="tool-header">
+      <h2>Timestamp Converter</h2>
+      <p>Unix, ISO and local time. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Time input</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="ts-input">Timestamp / ISO / date text</label><input id="ts-input" class="input" value="1779100459"></div>
+            <div class="field"><label for="ts-format">Assume numeric as</label><select id="ts-format" class="select"><option value="auto">Auto detect</option><option value="seconds">Unix seconds</option><option value="millis">Unix milliseconds</option></select></div>
+          </div>
+          <div class="action-row">
+            <button id="ts-now" class="btn" type="button">Use current time</button>
+            <button id="ts-iso" class="btn-secondary" type="button">Use ISO now</button>
+          </div>
+        
+    </div>
+  
+        <div id="ts-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="ts-cards"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#ts-output">Copy</button>
+      </div>
+      <pre id="ts-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

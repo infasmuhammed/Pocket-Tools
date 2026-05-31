@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Free private tools for PDFs, images, text, dates, and calculations. Works offline, no uploads — everything runs in your browser.">
+  <meta name="keywords" content="pdf tools, image compressor, merge pdf, split pdf, password generator, qr code, unit converter, offline tools, privacy">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Pocket Tools">
+  <link rel="canonical" href="https://pockettools.in/apps/everyday/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pocket Tools">
+  <meta property="og:title" content="Pocket Everyday — Private, offline tools for PDFs, images, text & more">
+  <meta property="og:description" content="Free private tools for PDFs, images, text, dates, and calculations. Works offline, no uploads — everything runs in your browser.">
+  <meta property="og:url" content="https://pockettools.in/apps/everyday/">
+  <meta property="og:image" content="https://pockettools.in/apps/everyday/assets/pocket-tools-logo-512.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pocket Everyday — Private, offline tools for PDFs, images, text & more">
+  <meta name="twitter:description" content="Free private tools for PDFs, images, text, dates, and calculations. Works offline, no uploads.">
+  <meta name="twitter:image" content="https://pockettools.in/apps/everyday/assets/pocket-tools-logo-512.png">
+
+  <!-- Strict CSP: only this origin, no external anything. blob: + data: needed for canvas/file output. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
+
+  <title>Pocket Everyday — Private, offline tools for PDFs, images, text & more</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pocket Tools",
+    "url": "https://pockettools.in/apps/everyday/",
+    "description": "Free private tools for PDFs, images, text, dates, and calculations. Works offline, no uploads — everything runs in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript and a modern browser",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="manifest" href="manifest.json?v=4">
+  <link rel="icon" type="image/png" href="assets/pocket-tools-logo-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/pwa-icon-app-180.png">
+  <script src="js/theme.js?v=1"></script>
+  <link rel="stylesheet" href="css/styles.css?v=3">
+</head>
+<body>
+
+  <header class="app-header">
+    <button id="btn-back" class="btn-icon hidden" aria-label="Back to home">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <h1 id="app-title"><img class="app-logo" src="assets/pocket-tools-logo-192.png" alt="" aria-hidden="true"><span>Pocket Tools</span></h1>
+    <button id="theme-toggle" class="btn-icon theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2 M12 20v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M4.93 19.07l1.41-1.41 M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="hero-eyebrow"><strong id="tool-count">0</strong> tools &nbsp;·&nbsp; free &nbsp;·&nbsp; works offline</p>
+          <h2>Everyday tools,<br>done right.</h2>
+          <p class="hero-sub">Images, PDFs, text, time &amp; more.</p>
+        </div>
+      </div>
+
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+        </svg>
+        <input id="tool-search" class="search-input" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search tools">
+      </div>
+
+      <nav class="categories" aria-label="Tool categories">
+        <button class="chip active" data-category="all">All</button>
+        <button class="chip" data-category="photos">Photos</button>
+        <button class="chip" data-category="documents">Documents</button>
+        <button class="chip" data-category="text">Text</button>
+        <button class="chip" data-category="math">Money &amp; Math</button>
+        <button class="chip" data-category="time">Time</button>
+        <button class="chip" data-category="utilities">Utilities</button>
+      </nav>
+
+      <div id="tool-grid" class="tool-grid" role="list"></div>
+
+      <footer class="home-footer">
+        <p class="muted small">Built for quick everyday work.</p>
+        <button id="pwa-install-btn" class="install-app-btn hidden" type="button">Install offline app</button>
+      </footer>
+    </section>
+
+    <!-- TOOL VIEW -->
+    <section id="view-tool" class="view hidden">
+      <div id="tool-container" class="tool-container">
+        <div class="skeleton" aria-hidden="true"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script type="module" src="js/app.js?v=30"></script>
+</body>
+</html>

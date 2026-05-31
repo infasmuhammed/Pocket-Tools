@@ -1,0 +1,41 @@
+<div class="tool-header">
+      <h2>Contrast Checker</h2>
+      <p>WCAG contrast ratio. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Contrast controls</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="co-fg">Text</label><input id="co-fg" class="input" type="color" value="#f3f3f3"></div>
+            <div class="field"><label for="co-bg">Background</label><input id="co-bg" class="input" type="color" value="#111111"></div>
+            <div class="field"><label for="co-size">Font size</label><input id="co-size" class="input" type="number" min="10" max="96" value="28"></div>
+            <div class="field"><label for="co-weight">Weight</label><select id="co-weight" class="select"><option value="400">Regular</option><option value="700" selected>Bold</option></select></div>
+          </div>
+        
+    </div>
+  
+        <div id="co-preview" class="contrast-preview"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="co-results"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Report</span>
+        <button class="btn-secondary" type="button" data-copy-target="#co-output">Copy</button>
+      </div>
+      <pre id="co-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

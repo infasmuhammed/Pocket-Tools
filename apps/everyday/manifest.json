@@ -1,0 +1,36 @@
+{
+  "name": "Pocket Everyday",
+  "short_name": "PT Everyday",
+  "description": "Everyday tools — images, documents, text, dates, and quick calculations. Private, offline, no uploads.",
+  "start_url": "/apps/everyday/",
+  "scope": "/apps/everyday/",
+  "id": "/apps/everyday/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/pwa-icon-app-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/pwa-icon-app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/pwa-icon-app-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

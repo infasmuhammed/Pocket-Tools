@@ -1,0 +1,69 @@
+<div class="tool-header">
+      <h2>Gradient Generator</h2>
+      <p>Build CSS gradients visually. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Gradient controls</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="gg-type">Type</label><select id="gg-type" class="select"><option value="linear">Linear</option><option value="radial">Radial</option><option value="conic">Conic</option></select></div>
+            <div class="field"><label for="gg-angle">Angle</label><input id="gg-angle" class="input" type="range" min="0" max="360" value="135"></div>
+            <div class="field"><label for="gg-position">Position</label><select id="gg-position" class="select"><option value="center">Center</option><option value="top left">Top left</option><option value="top right">Top right</option><option value="bottom left">Bottom left</option><option value="bottom right">Bottom right</option></select></div>
+            <div class="field"><label for="gg-shape">Radial shape</label><select id="gg-shape" class="select"><option value="circle">Circle</option><option value="ellipse">Ellipse</option></select></div>
+          </div>
+          <div class="control-grid">
+            <div class="field"><label for="gg-a">Start color</label><input id="gg-a" class="input" type="color" value="#111111"></div>
+            <div class="field"><label for="gg-b">Middle color</label><input id="gg-b" class="input" type="color" value="#737373"></div>
+            <div class="field"><label for="gg-c">End color</label><input id="gg-c" class="input" type="color" value="#f3f3f3"></div>
+            <div class="field"><label for="gg-softness">Middle stop</label><input id="gg-softness" class="input" type="range" min="10" max="90" value="52"></div>
+          </div>
+          <div class="action-row">
+            <button id="gg-random" class="btn-secondary" type="button">Randomize</button>
+            <button id="gg-reverse" class="btn-secondary" type="button">Reverse</button>
+          </div>
+        
+    </div>
+  
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Presets</h3>
+          
+        </div>
+      </div>
+      
+          <div class="action-row">
+            <button class="btn-secondary" type="button" data-gradient="#111111,#737373,#f3f3f3">Graphite</button>
+            <button class="btn-secondary" type="button" data-gradient="#101820,#415a77,#e0e1dd">Slate</button>
+            <button class="btn-secondary" type="button" data-gradient="#111111,#5f6368,#ffffff">Chrome</button>
+            <button class="btn-secondary" type="button" data-gradient="#0f172a,#334155,#f8fafc">Midnight</button>
+          </div>
+        
+    </div>
+  
+      </div>
+      <div class="tool-stack">
+        <div id="gg-preview" class="preview-surface"><strong>Gradient Preview</strong></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">CSS</span>
+        <button class="btn-secondary" type="button" data-copy-target="#gg-output">Copy</button>
+      </div>
+      <pre id="gg-output" class="output"></pre>
+    </div>
+  
+        <div id="gg-meta"></div>
+      </div>
+    </div>
+  </div>

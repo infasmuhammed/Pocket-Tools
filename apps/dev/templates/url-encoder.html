@@ -1,0 +1,48 @@
+<div class="tool-header">
+      <h2>URL Encoder Decoder</h2>
+      <p>Encode, decode and parse URLs. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>URL workspace</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="url-input">Input</label>
+      <textarea id="url-input" class="textarea" rows="8" spellcheck="false">https://example.com/search?q=pocket tools&amp;mode=dev#preview</textarea>
+    </div>
+  
+          <div class="action-row">
+            <button id="url-encode" class="btn" type="button">Encode component</button>
+            <button id="url-decode" class="btn-secondary" type="button">Decode component</button>
+            <button id="url-encode-uri" class="btn-secondary" type="button">Encode full URL</button>
+            <button id="url-parse" class="btn-secondary" type="button">Parse URL</button>
+          </div>
+        
+    </div>
+  
+        <div id="url-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        <div id="url-details"></div>
+        <div id="url-params" class="mini-table"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#url-output">Copy</button>
+      </div>
+      <pre id="url-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

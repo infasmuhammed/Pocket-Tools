@@ -1,0 +1,44 @@
+<div class="tool-header">
+      <h2>CSS Minifier</h2>
+      <p>Minify CSS locally. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>CSS input</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="cm-input">CSS</label>
+      <textarea id="cm-input" class="textarea" rows="10" spellcheck="false">.card {\n  color: #fff;\n  background: #111;\n}\n</textarea>
+    </div>
+  
+          <div class="action-row">
+            <button id="cm-minify" class="btn" type="button">Minify CSS</button>
+            <button id="cm-format" class="btn-secondary" type="button">Format CSS</button>
+          </div>
+        
+    </div>
+  
+        <div id="cm-metrics"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#cm-output">Copy</button>
+      </div>
+      <pre id="cm-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

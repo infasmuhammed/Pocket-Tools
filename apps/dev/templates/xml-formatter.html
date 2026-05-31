@@ -1,0 +1,44 @@
+<div class="tool-header">
+      <h2>XML Formatter</h2>
+      <p>Format compact XML. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>XML input</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="xf-input">XML</label>
+      <textarea id="xf-input" class="textarea" rows="10" spellcheck="false">&lt;note&gt;&lt;to&gt;dev&lt;/to&gt;&lt;body&gt;offline&lt;/body&gt;&lt;/note&gt;</textarea>
+    </div>
+  
+          <div class="action-row">
+            <button id="xf-format" class="btn" type="button">Format XML</button>
+            <button id="xf-minify" class="btn-secondary" type="button">Minify XML</button>
+          </div>
+        
+    </div>
+  
+        <div id="xf-status" class="status-line"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#xf-output">Copy</button>
+      </div>
+      <pre id="xf-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

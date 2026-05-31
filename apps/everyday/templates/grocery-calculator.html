@@ -1,0 +1,57 @@
+<div class="tool-header">
+  <h2>Grocery List + Price Calculator</h2>
+  <p>Create a grocery list with flexible units, prices, and a copy-ready total.</p>
+</div>
+
+<div class="tool-dashboard">
+  <section class="tool-panel">
+    <div class="grocery-entry-grid">
+      <div class="input-group">
+        <label for="gc-item">Item</label>
+        <input type="text" id="gc-item" placeholder="Rice">
+      </div>
+      <div class="input-group">
+        <label for="gc-qty">Quantity</label>
+        <input type="number" id="gc-qty" min="0" step="0.01" value="1">
+      </div>
+      <div class="input-group">
+        <label for="gc-unit">Unit</label>
+        <select id="gc-unit">
+          <option value="kg">kg</option>
+          <option value="g">g</option>
+          <option value="packet">packet</option>
+          <option value="piece">piece</option>
+          <option value="litre">litre</option>
+          <option value="ml">ml</option>
+          <option value="bunch">bunch</option>
+          <option value="box">box</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="gc-price" id="gc-price-label">Unit price</label>
+        <input type="number" id="gc-price" min="0" step="0.01" placeholder="Price per kg">
+        <span id="gc-price-hint" class="field-hint">For kg or g, enter the price for 1 kg.</span>
+      </div>
+    </div>
+    <div class="button-row">
+      <button id="gc-add" class="btn">Add Item</button>
+      <button id="gc-clear" class="btn btn-secondary">Clear List</button>
+    </div>
+  </section>
+  <section class="tool-panel">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Items</span>
+        <strong id="gc-count">0</strong>
+      </div>
+      <div class="metric">
+        <span>Total</span>
+        <strong id="gc-total">0.00</strong>
+      </div>
+    </div>
+    <div id="gc-list" class="grocery-list"></div>
+    <div class="button-row">
+      <button id="gc-copy" class="btn btn-secondary">Copy List</button>
+    </div>
+  </section>
+</div>

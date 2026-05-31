@@ -1,0 +1,45 @@
+<div class="tool-header">
+      <h2>Token Estimator</h2>
+      <p>Rough tokens, words and characters. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Text</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="te-input">Prompt or document</label>
+      <textarea id="te-input" class="textarea" rows="12" spellcheck="false">Paste a prompt or document here to estimate rough token count.</textarea>
+    </div>
+  
+          <div class="control-grid">
+            <div class="field"><label for="te-profile">Estimator profile</label><select id="te-profile" class="select"><option value="4">General English</option><option value="3.2">Code heavy</option><option value="2.6">Dense symbols</option></select></div>
+            <div class="field"><label for="te-context">Context window</label><select id="te-context" class="select"><option value="8000">8k</option><option value="32000">32k</option><option value="128000">128k</option><option value="1000000">1M</option></select></div>
+          </div>
+        
+    </div>
+  
+      </div>
+      <div class="tool-stack">
+        <div class="stats-grid" id="te-stats"></div>
+        <div id="te-advice" class="empty-state"></div>
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Estimate</span>
+        <button class="btn-secondary" type="button" data-copy-target="#te-output">Copy</button>
+      </div>
+      <pre id="te-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

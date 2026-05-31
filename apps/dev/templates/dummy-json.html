@@ -1,0 +1,41 @@
+<div class="tool-header">
+      <h2>Dummy JSON Generator</h2>
+      <p>Generate fake users, products and events. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Dataset</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="dj-type">Type</label><select id="dj-type" class="select"><option value="users">Users</option><option value="products">Products</option><option value="events">Events</option><option value="tasks">Tasks</option><option value="devices">Mobile devices</option></select></div>
+            <div class="field"><label for="dj-count">Count</label><input id="dj-count" class="input" type="number" min="1" max="200" value="8"></div>
+            <div class="field"><label for="dj-format">Format</label><select id="dj-format" class="select"><option value="pretty">Pretty JSON</option><option value="compact">Compact JSON</option><option value="jsonl">JSON Lines</option></select></div>
+            <div class="field"><label for="dj-id">ID style</label><select id="dj-id" class="select"><option value="number">Number</option><option value="uuid">UUID</option></select></div>
+          </div>
+          <div class="action-row"><button id="dj-run" class="btn" type="button">Generate dataset</button></div>
+        
+    </div>
+  
+        <div id="dj-stats"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#dj-output">Copy</button>
+      </div>
+      <pre id="dj-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>

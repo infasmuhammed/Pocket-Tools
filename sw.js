@@ -1,133 +1,54 @@
-// Pocket Tools — service worker.
-// Strategy: full app precache for offline-first install, plus runtime refreshes.
-
-const VERSION = 'pocket-tools-v26';
-const PRECACHE = `${VERSION}-precache`;
-const RUNTIME  = `${VERSION}-runtime`;
+const VERSION = 'pocket-shell-v1';
+const CACHE = `${VERSION}-cache`;
 
 const PRECACHE_URLS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './css/styles.css',
-  './js/app.js',
-  './js/router.js',
-  './js/registry.js',
-  './js/core/ui.js',
-  './js/core/file.js',
-  './js/core/validate.js',
-  './js/core/lazy.js',
-
-  // Libraries
-  './lib/qrcode.min.js',
-  './lib/pdf-lib.min.js',
-  './lib/pdf.min.js',
-  './lib/pdf.worker.min.js',
-  './lib/qpdf.js',
-  './lib/qpdf.wasm',
-
-  // Assets
-  './assets/icon.png',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/icon-maskable-512.png',
-  './assets/apple-touch-icon.png',
-
-  // Tool templates
-  './templates/image-compressor.html',
-  './templates/format-converter.html',
-  './templates/bulk-renamer.html',
-  './templates/social-resizer.html',
-  './templates/ratio-cropper.html',
-  './templates/photo-pdf.html',
-  './templates/color-picker.html',
-  './templates/watermark.html',
-  './templates/black-and-white.html',
-  './templates/merge-pdf.html',
-  './templates/split-pdf.html',
-  './templates/protect-pdf.html',
-  './templates/page-numbers.html',
-  './templates/extract-pdf.html',
-  './templates/rotate-pdf.html',
-  './templates/unprotect-pdf.html',
-  './templates/id-masker.html',
-  './templates/receipt-enhancer.html',
-  './templates/word-counter.html',
-  './templates/case-converter.html',
-  './templates/whitespace-remover.html',
-  './templates/alphabetical-sorter.html',
-  './templates/duplicate-remover.html',
-  './templates/reading-time.html',
-  './templates/bill-splitter.html',
-  './templates/discount-calculator.html',
-  './templates/emi-calculator.html',
-  './templates/percentage-change.html',
-  './templates/unit-converter.html',
-  './templates/grocery-calculator.html',
-  './templates/pomodoro.html',
-  './templates/days-between.html',
-  './templates/timezone.html',
-  './templates/stopwatch.html',
-  './templates/password-generator.html',
-  './templates/qr-generator.html',
-  './templates/random-decision.html',
-  './templates/signature-png.html',
-
-  // Tool scripts
-  './js/tools/image-compressor.js',
-  './js/tools/format-converter.js',
-  './js/tools/bulk-renamer.js',
-  './js/tools/social-resizer.js',
-  './js/tools/ratio-cropper.js',
-  './js/tools/photo-pdf.js',
-  './js/tools/color-picker.js',
-  './js/tools/watermark.js',
-  './js/tools/black-and-white.js',
-  './js/tools/merge-pdf.js',
-  './js/tools/split-pdf.js',
-  './js/tools/protect-pdf.js',
-  './js/tools/page-numbers.js',
-  './js/tools/extract-pdf.js',
-  './js/tools/rotate-pdf.js',
-  './js/tools/unprotect-pdf.js',
-  './js/tools/id-masker.js',
-  './js/tools/receipt-enhancer.js',
-  './js/tools/word-counter.js',
-  './js/tools/case-converter.js',
-  './js/tools/whitespace-remover.js',
-  './js/tools/alphabetical-sorter.js',
-  './js/tools/duplicate-remover.js',
-  './js/tools/reading-time.js',
-  './js/tools/bill-splitter.js',
-  './js/tools/discount-calculator.js',
-  './js/tools/emi-calculator.js',
-  './js/tools/percentage-change.js',
-  './js/tools/unit-converter.js',
-  './js/tools/grocery-calculator.js',
-  './js/tools/pomodoro.js',
-  './js/tools/days-between.js',
-  './js/tools/timezone.js',
-  './js/tools/stopwatch.js',
-  './js/tools/password-generator.js',
-  './js/tools/qr-generator.js',
-  './js/tools/random-decision.js',
-  './js/tools/signature-png.js',
+  '/',
+  '/home/',
+  '/home/index.html',
+  '/home/css/styles.css?v=22',
+  '/home/script.js?v=9',
+  '/apps/everyday/',
+  '/apps/everyday/index.html',
+  '/apps/everyday/manifest.json?v=4',
+  '/apps/everyday/css/styles.css?v=3',
+  '/apps/everyday/js/theme.js?v=1',
+  '/apps/everyday/js/app.js?v=30',
+  '/apps/everyday/js/router.js?v=4',
+  '/apps/everyday/js/registry.js',
+  '/apps/everyday/js/core/ui.js',
+  '/apps/everyday/js/core/file.js',
+  '/apps/everyday/js/core/validate.js',
+  '/apps/everyday/js/core/lazy.js',
+  '/apps/everyday/assets/pocket-tools-logo-192.png',
+  '/apps/everyday/assets/pwa-icon-app-192.png',
+  '/apps/dev/',
+  '/apps/dev/index.html',
+  '/apps/dev/manifest.json?v=7',
+  '/apps/dev/css/styles.css?v=17',
+  '/apps/dev/js/theme.js?v=13',
+  '/apps/dev/js/app.js?v=24',
+  '/apps/dev/js/regex-worker.js?v=1',
+  '/apps/dev/assets/pocket-tools-logo-192.png',
+  '/apps/dev/assets/pwa-icon-app-192.png',
 ];
+
+const FALLBACKS = new Map([
+  ['/', '/home/'],
+  ['/home', '/home/'],
+  ['/home/', '/home/'],
+  ['/apps/everyday', '/apps/everyday/'],
+  ['/apps/everyday/', '/apps/everyday/'],
+  ['/apps/dev', '/apps/dev/'],
+  ['/apps/dev/', '/apps/dev/'],
+]);
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    const cache = await caches.open(PRECACHE);
-    await Promise.allSettled(PRECACHE_URLS.map(async (url) => {
-      try {
-        const res = await fetch(url, { cache: 'reload' });
-        if (!res.ok) {
-          console.warn(`[sw] precache skipped: ${url} (${res.status})`);
-          return;
-        }
-        await cache.put(url, res);
-      } catch (err) {
-        console.warn(`[sw] precache error: ${url}`, err);
-      }
+    const cache = await caches.open(CACHE);
+    await Promise.all(PRECACHE_URLS.map(async (url) => {
+      const response = await fetch(url, { cache: 'reload' });
+      if (!response.ok) throw new Error(`Shell precache failed: ${url}`);
+      await cache.put(url, response);
     }));
     await self.skipWaiting();
   })());
@@ -137,61 +58,88 @@ self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
     await Promise.all(keys
-      .filter(k => k !== PRECACHE && k !== RUNTIME)
-      .map(k => caches.delete(k)));
+      .filter((key) => key.startsWith('pocket-shell-') && key !== CACHE)
+      .map((key) => caches.delete(key)));
     await self.clients.claim();
   })());
 });
 
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
+function offlinePage() {
+  return new Response(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pocket Tools is offline</title>
+  <style>
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#141413;color:#f5f3ef;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}
+    main{width:min(100% - 40px,440px)}
+    h1{font-size:24px;line-height:1.25;margin:0 0 14px}
+    p{color:#b4b0a8;line-height:1.7;margin:0}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Pocket Tools needs one online load.</h1>
+    <p>Reconnect once to refresh this page. After a Pocket app opens successfully, it can keep working from its offline cache.</p>
+  </main>
+</body>
+</html>`, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
 
-  // Only handle same-origin GETs
-  if (req.method !== 'GET') return;
-  const url = new URL(req.url);
+async function cacheFirst(request, fallbackUrl = '') {
+  const cache = await caches.open(CACHE);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  if (fallbackUrl) {
+    const fallback = await cache.match(fallbackUrl);
+    if (fallback) return fallback;
+  }
+  return null;
+}
+
+self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
-  // Navigation requests → app shell fallback (so refresh on a tool route works offline)
-  if (req.mode === 'navigate') {
-    event.respondWith((async () => {
-      try {
-        const fresh = await fetch(req);
-        const cache = await caches.open(PRECACHE);
-        cache.put('./index.html', fresh.clone());
-        return fresh;
-      } catch {
-        const cached = await caches.match('./index.html');
-        return cached || new Response('<h1>Offline</h1>', { headers: { 'Content-Type': 'text/html' }});
-      }
-    })());
-    return;
-  }
+  const fallbackUrl = FALLBACKS.get(url.pathname) || '';
+  const isShellPath = Boolean(fallbackUrl) || PRECACHE_URLS.some((path) => {
+    const precacheUrl = new URL(path, self.location.origin);
+    return precacheUrl.pathname === url.pathname && precacheUrl.search === url.search;
+  });
 
-  // Cache-first for everything else (templates, tool JS, lib, assets)
-  event.respondWith((async () => {
-    const cached = await caches.match(req);
-    if (cached) {
-      // Stale-while-revalidate: refresh in background
-      event.waitUntil((async () => {
-        try {
-          const fresh = await fetch(req);
-          if (fresh.ok) {
-            const cache = await caches.open(RUNTIME);
-            await cache.put(req, fresh.clone());
-          }
-        } catch { /* offline — ignore */ }
-      })());
-      return cached;
-    }
-    try {
-      const fresh = await fetch(req);
+  if (!isShellPath) return;
+
+  const networkTask = fetch(request)
+    .then(async (fresh) => {
       if (fresh.ok) {
-        const cache = await caches.open(RUNTIME);
-        cache.put(req, fresh.clone());
+        const cache = await caches.open(CACHE);
+        await cache.put(request, fresh.clone());
+        if (fallbackUrl) await cache.put(fallbackUrl, fresh.clone());
       }
       return fresh;
-    } catch (err) {
-      return new Response('', { status: 504, statusText: 'Offline' });
+    })
+    .catch(() => null);
+
+  event.waitUntil(networkTask);
+  event.respondWith((async () => {
+    if (request.mode === 'navigate') {
+      const cached = await cacheFirst(request, fallbackUrl);
+      const fresh = await networkTask;
+      return fresh || cached || offlinePage();
     }
+
+    const cached = await cacheFirst(request, fallbackUrl);
+    if (cached) return cached;
+    return await networkTask || offlinePage();
   })());
 });

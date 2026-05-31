@@ -1,0 +1,46 @@
+<div class="tool-header">
+      <h2>HTML Formatter</h2>
+      <p>Pretty print or minify HTML. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>HTML input</h3>
+          
+        </div>
+      </div>
+      
+          
+    <div class="field">
+      <label for="hf-input">HTML</label>
+      <textarea id="hf-input" class="textarea" rows="10" spellcheck="false">&lt;main&gt;&lt;h1&gt;Pocket Dev&lt;/h1&gt;&lt;p&gt;Offline tools&lt;/p&gt;&lt;/main&gt;</textarea>
+    </div>
+  
+          <div class="action-row">
+            <button id="hf-format" class="btn" type="button">Format</button>
+            <button id="hf-minify" class="btn-secondary" type="button">Minify</button>
+            <button id="hf-preview-btn" class="btn-secondary" type="button">Preview text</button>
+          </div>
+        
+    </div>
+  
+        <div id="hf-metrics"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#hf-output">Copy</button>
+      </div>
+      <pre id="hf-output" class="output"></pre>
+    </div>
+  
+        <div id="hf-preview" class="preview-box preview-content"></div>
+      </div>
+    </div>
+  </div>

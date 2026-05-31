@@ -1,0 +1,41 @@
+<div class="tool-header">
+      <h2>Lorem Ipsum Generator</h2>
+      <p>Generate placeholder copy. Everything runs locally in this browser.</p>
+    </div>
+    <div class="tool-dashboard">
+    <div class="tool-layout">
+      <div class="tool-stack">
+        
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h3>Copy options</h3>
+          
+        </div>
+      </div>
+      
+          <div class="control-grid">
+            <div class="field"><label for="li-count">Paragraphs</label><input id="li-count" class="input" type="number" min="1" max="20" value="3"></div>
+            <div class="field"><label for="li-words">Words each</label><input id="li-words" class="input" type="number" min="5" max="200" value="42"></div>
+            <div class="field"><label for="li-tone">Word bank</label><select id="li-tone" class="select"><option value="classic">Classic lorem</option><option value="product">Product UI</option><option value="dev">Developer docs</option></select></div>
+            <div class="field"><label for="li-format">Format</label><select id="li-format" class="select"><option value="paragraphs">Paragraphs</option><option value="html">HTML paragraphs</option><option value="list">Bullet list</option></select></div>
+          </div>
+          <div class="action-row"><button id="li-run" class="btn" type="button">Generate copy</button></div>
+        
+    </div>
+  
+        <div id="li-stats"></div>
+      </div>
+      <div class="tool-stack">
+        
+    <div class="field">
+      <div class="row">
+        <span class="mini-label">Output</span>
+        <button class="btn-secondary" type="button" data-copy-target="#li-output">Copy</button>
+      </div>
+      <pre id="li-output" class="output"></pre>
+    </div>
+  
+      </div>
+    </div>
+  </div>
